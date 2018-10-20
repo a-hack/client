@@ -25,6 +25,7 @@ module.exports = {
 			}
 		],
 		"no-prototype-builtins": "off",
+		"no-useless-constructor": "off",
 		"arrow-parens": "off",
 		"generator-star-spacing": "off",
 		"no-confusing-arrow": [
