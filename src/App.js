@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import HomepageLayout from "./layouts/HomepageLayout";
+import HomepageLayout from "./pages/HomepageLayout";
 import Dashboard from "./pages/Dashboard";
 
 import "./App.css";
