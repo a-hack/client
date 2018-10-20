@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { WidthProvider, Responsive } from "react-grid-layout";
 
-import widgets from "../widgets";
+import "./index.css";
+
+import widgets from "../../widgets";
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
