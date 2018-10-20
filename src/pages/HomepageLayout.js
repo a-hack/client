@@ -16,6 +16,7 @@ import {
 	Visibility,
 } from "semantic-ui-react";
 import GridLayout from "react-grid-layout";
+import ResponsiveContainer from "../layouts/Container";
 import "semantic-ui-css/semantic.min.css";
 
 /* eslint-disable react/no-multi-comp */
@@ -24,38 +25,40 @@ import "semantic-ui-css/semantic.min.css";
  */
 const HomepageHeading = ({ mobile }) => (
 	<Container text>
-		<Header
-			as="h1"
-			content="D-A-Team"
-			inverted
-			style={{
-				fontSize: mobile ? "2em" : "4em",
-				fontWeight: "normal",
-				marginBottom: 0,
-				marginTop: mobile ? "1.5em" : "3em",
-			}}
-		/>
-		<Header
-			as="h2"
-			content="Do whatever you want when you want to."
-			inverted
-			style={{
-				fontSize: mobile ? "1.5em" : "1.7em",
-				fontWeight: "normal",
-				marginTop: mobile ? "0.5em" : "1.5em",
-			}}
-		/>
-		<Button primary size="huge">
-			Get Started
-			<Icon name="right arrow" />
-		</Button>
-	</Container>
+	<Header
+		as="h1"
+		content="D-A-Team"
+		inverted
+		style={{
+			fontSize: mobile ? "2em" : "4em",
+			fontWeight: "normal",
+			marginBottom: 0,
+			marginTop: mobile ? "1.5em" : "3em",
+		}}
+	/>
+	<Header
+		as="h2"
+		content="Do whatever you want when you want to."
+		inverted
+		style={{
+			fontSize: mobile ? "1.5em" : "1.7em",
+			fontWeight: "normal",
+			marginTop: mobile ? "0.5em" : "1.5em",
+		}}
+	/>
+	<Button primary size="huge">
+		Get Started
+		<Icon name="right arrow" />
+	</Button>
+</Container>
 );
+
 
 HomepageHeading.propTypes = {
 	mobile: PropTypes.bool.isRequired,
 };
 
+<<<<<<< HEAD:src/layouts/HomepageLayout.js
 /* Heads up!
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
  * It can be more complicated, but you can create really flexible markup.
@@ -64,6 +67,8 @@ class DesktopContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
+		this.hideFixedMenu = this.hideFixedMenu.bind(this);
+		this.showFixedMenu = this.showFixedMenu.bind(this);
 	}
 
 	hideFixedMenu() {
@@ -216,9 +221,11 @@ const ResponsiveContainer = ({ children }) => (
 ResponsiveContainer.propTypes = {
 	children: PropTypes.node.isRequired,
 };
+=======
+>>>>>>> 301b89e4ec063ef8c03faf30bc68f2c8cc930130:src/pages/HomepageLayout.js
 
 const HomepageLayout = () => (
-	<ResponsiveContainer>
+	<ResponsiveContainer banner={<HomepageHeading />}>
 		<Segment style={{ padding: "8em 0em" }} vertical>
 			<Grid container stackable verticalAlign="middle">
 				<Grid.Row>
