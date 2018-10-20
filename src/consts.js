@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 export const api = "/api/v1";
 
@@ -7,4 +7,3 @@ export const WidgetProps = {
 	config: PropTypes.object.isRequired,
 	save: PropTypes.func.isRequired,
 };
-
