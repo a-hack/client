@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import {
 	Button,
@@ -59,7 +60,13 @@ class DesktopContainer extends Component {
 					<Segment
 						inverted
 						textAlign="center"
-						style={{ minHeight: this.props.isHome ? "700" : "70", padding: "1em 0em" }}
+						style={{ 
+							minHeight: this.props.homeBanner ? "600px" : "70px", 
+							padding: "1em 0em",
+							backgroundImage: this.props.homeBanner ? "url(https://source.unsplash.com/collection/3390539/1600x900)" : "none",
+							backgroundSize: "cover",
+							backgroundPosition: "70% 50%",
+							}}
 						vertical
 					>
 						<Menu
@@ -70,19 +77,20 @@ class DesktopContainer extends Component {
 							size="large"
 						>
 							<Container>
-								<Menu.Item as="a" active>
+								<Menu.Item as={Link} to="/" active>
 									Home
 								</Menu.Item>
 								<Menu.Item as="a">Work</Menu.Item>
 								<Menu.Item as="a">Company</Menu.Item>
 								<Menu.Item as="a">Careers</Menu.Item>
 								<Menu.Item position="right">
-									<Button as="a" inverted={!fixed}>
-										Log in
+								{
+									this.props.homeBanner && 
+									<Button as={Link} to="/dash/new/edit" inverted={!fixed}>
+										New
 									</Button>
-									<Button as="a" inverted={!fixed} primary={fixed} style={{ marginLeft: "0.5em" }}>
-										Sign Up
-									</Button>
+								}
+									
 								</Menu.Item>
 							</Container>
 						</Menu>
@@ -134,11 +142,13 @@ class MobileContainer extends Component {
 						<Menu.Item as="a" active>
 							Home
 						</Menu.Item>
-						<Menu.Item as="a">Work</Menu.Item>
-						<Menu.Item as="a">Company</Menu.Item>
-						<Menu.Item as="a">Careers</Menu.Item>
-						{/* <Menu.Item as="a">Log in</Menu.Item>
-						<Menu.Item as="a">Sign Up</Menu.Item> */}
+					{
+						this.props.homeBanner &&
+						<Button as={Link} to="/dash/new/edit">
+							New
+						</Button>
+					}
+						
 					</Sidebar>
 
 					<Sidebar.Pusher
@@ -149,7 +159,13 @@ class MobileContainer extends Component {
 						<Segment
 							inverted
 							textAlign="center"
-							style={{ minHeight:  this.props.isHome ? "350" : "50", padding: "1em 0em" }}
+							style={{ 
+								minHeight:  this.props.isHome ? "350" : "50", 
+								padding: "1em 0em",
+								backgroundImage: this.props.homeBanner ? "url(https://source.unsplash.com/collection/3390539/1600x900)" : "none",
+								backgroundSize: "cover",
+								backgroundPosition: "70% 50%", 
+								}}
 							vertical
 						>
 							<Container>
@@ -158,12 +174,12 @@ class MobileContainer extends Component {
 										<Icon name="sidebar" />
 									</Menu.Item>
 									<Menu.Item position="right">
-										<Button as="a" inverted>
-											Log in
+									{
+										this.props.homeBanner &&
+										<Button as={Link} to="/dash/new/edit">
+											New
 										</Button>
-										<Button as="a" inverted style={{ marginLeft: "0.5em" }}>
-											Sign Up
-										</Button>
+									}
 									</Menu.Item>
 								</Menu>
 							</Container>

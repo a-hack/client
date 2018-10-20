@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
 	Button,
 	Container,
@@ -27,7 +28,7 @@ const HomepageHeading = ({ mobile }) => (
 	<Container text>
 	<Header
 		as="h1"
-		content="D-A-Team"
+		content="change your view"
 		inverted
 		style={{
 			fontSize: mobile ? "2em" : "4em",
@@ -38,7 +39,7 @@ const HomepageHeading = ({ mobile }) => (
 	/>
 	<Header
 		as="h2"
-		content="Do whatever you want when you want to."
+		content="Visualize oceans' data in a way that truly becomes you."
 		inverted
 		style={{
 			fontSize: mobile ? "1.5em" : "1.7em",
@@ -46,7 +47,7 @@ const HomepageHeading = ({ mobile }) => (
 			marginTop: mobile ? "0.5em" : "1.5em",
 		}}
 	/>
-	<Button primary size="huge">
+	<Button as={Link} to="/dash/new" primary size="huge">
 		Get Started
 		<Icon name="right arrow" />
 	</Button>
@@ -58,38 +59,45 @@ HomepageHeading.propTypes = {
 	mobile: PropTypes.bool.isRequired,
 };
 
+const subHeader = {
+  fontSize: "95%",
+  lineHeight: "1.6",
+ }
 
 const HomepageLayout = () => (
 	<ResponsiveContainer banner={<HomepageHeading />}>
-		<Segment style={{ padding: "8em 0em" }} vertical>
-			<Grid container stackable verticalAlign="middle">
-				<Grid.Row>
-					<Grid.Column width={8}>
-						<Header as="h3" style={{ fontSize: "2em" }}>
-							We Help Companies and Companions
-						</Header>
-						<p style={{ fontSize: "1.33em" }}>
-							We can give your company superpowers to do things that they never thought possible.
-							Let us delight your customers and empower your needs... through pure data analytics.
-						</p>
-						<Header as="h3" style={{ fontSize: "2em" }}>
-							We Make Bananas That Can Dance
-						</Header>
-						<p style={{ fontSize: "1.33em" }}>
-							Yes that"s right, you thought it was the stuff of dreams, but even bananas can be
-							bioengineered.
-						</p>
-					</Grid.Column>
-					<Grid.Column floated="right" width={6}>
-						<Image bordered rounded size="large" src="/images/wireframe/white-image.png" />
-					</Grid.Column>
-				</Grid.Row>
-				<Grid.Row>
-					<Grid.Column textAlign="center">
-						<Button size="huge">Check Them Out</Button>
-					</Grid.Column>
-				</Grid.Row>
-			</Grid>
+		<Segment style={{ padding: "3em 0em" }} vertical>
+		<Container>
+		<Header size="large" textAlign="center" style={{marginBottom: "2em", fontWeight: "500"}}>
+			Better analyze, understand and visualize how we can conserve and sustainably use the oceans, seas and marine resources
+			</Header>
+			<Grid columns='three' >
+			<Grid.Row>
+				<Grid.Column>
+					<Header as='h3' icon>
+						<Icon circular color='blue' size="massive" name='chart bar' />
+						Visualize
+						<Header.Subheader style={subHeader}>Make sense of the a massive collection of marine dataset</Header.Subheader>
+					</Header>
+				</Grid.Column>
+				<Grid.Column>
+					<Header as='h3' icon>
+						<Icon circular color='blue' size="massive" name='code' />
+						Analyze
+						<Header.Subheader style={subHeader}>Collaborative analysis of filtered dataset for sensemaking</Header.Subheader>
+					</Header>
+				</Grid.Column>
+				<Grid.Column>
+					<Header as='h3' icon>
+						<Icon circular color='blue' size="massive" name='group' />
+						Distribute
+						<Header.Subheader style={subHeader}>Easily share customized data with peers and business mates for better understanding</Header.Subheader>
+					</Header>
+				</Grid.Column>
+			</Grid.Row>
+		</Grid>
+		</Container>
+
 		</Segment>
 		<Segment style={{ padding: "0em" }} vertical>
 			<Grid celled="internally" columns="equal" stackable>
