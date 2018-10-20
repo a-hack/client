@@ -51,8 +51,6 @@ export default class Template extends Component {
 	}
 
 	create(data) {
-		const target = document.createElement("div");
-		document.getElementById("test").appendChild(target);
 		const pic = picasso({
 			style: {
 				"$font-size": "12px",
