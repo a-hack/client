@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import {
 	Button,
@@ -59,7 +60,13 @@ class DesktopContainer extends Component {
 					<Segment
 						inverted
 						textAlign="center"
-						style={{ minHeight: this.props.isHome ? "700" : "70", padding: "1em 0em" }}
+						style={{ 
+							minHeight: this.props.homeBanner ? "600px" : "70px", 
+							padding: "1em 0em",
+							backgroundImage: this.props.homeBanner ? "url(https://source.unsplash.com/collection/3390539/1600x900)" : "none",
+							backgroundSize: "cover",
+							backgroundPosition: "70% 50%",
+							}}
 						vertical
 					>
 						<Menu
@@ -70,19 +77,20 @@ class DesktopContainer extends Component {
 							size="large"
 						>
 							<Container>
-								<Menu.Item as="a" active>
+								<Menu.Item as={Link} to="/" active>
 									Home
 								</Menu.Item>
 								<Menu.Item as="a">Work</Menu.Item>
 								<Menu.Item as="a">Company</Menu.Item>
 								<Menu.Item as="a">Careers</Menu.Item>
 								<Menu.Item position="right">
-									<Button as="a" inverted={!fixed}>
-										Log in
+								{
+									this.props.homeBanner && 
+									<Button as={Link} to="/dash/new/edit" inverted={!fixed}>
+										New
 									</Button>
-									<Button as="a" inverted={!fixed} primary={fixed} style={{ marginLeft: "0.5em" }}>
-										Sign Up
-									</Button>
+								}
+									
 								</Menu.Item>
 							</Container>
 						</Menu>
@@ -91,6 +99,40 @@ class DesktopContainer extends Component {
 				</Visibility>
 
 				{children}
+				<Segment inverted vertical style={{ padding: "4em 0em", marginTop: "2em" }}>
+					<Container>
+						<Grid divided inverted stackable>
+							<Grid.Row>
+								<Grid.Column width={3}>
+									<Header inverted as="h4" content="About" />
+									<List link inverted>
+										<List.Item as="a">Sitemap</List.Item>
+										<List.Item as="a">Contact Us</List.Item>
+										<List.Item as="a">Religious Ceremonies</List.Item>
+										<List.Item as="a">Gazebo Plans</List.Item>
+									</List>
+								</Grid.Column>
+								<Grid.Column width={3}>
+									<Header inverted as="h4" content="Services" />
+									<List link inverted>
+										<List.Item as="a">Banana Pre-Order</List.Item>
+										<List.Item as="a">DNA FAQ</List.Item>
+										<List.Item as="a">How To Access</List.Item>
+										<List.Item as="a">Favorite X-Men</List.Item>
+									</List>
+								</Grid.Column>
+								<Grid.Column width={7}>
+									<Header as="h4" inverted>
+										Footer Header
+									</Header>
+									<p>
+										Extra space for a call to action inside the footer that could help re-engage users.
+									</p>
+								</Grid.Column>
+							</Grid.Row>
+						</Grid>
+					</Container>
+				</Segment>
 			</Responsive>
 		)
 	}
@@ -134,11 +176,13 @@ class MobileContainer extends Component {
 						<Menu.Item as="a" active>
 							Home
 						</Menu.Item>
-						<Menu.Item as="a">Work</Menu.Item>
-						<Menu.Item as="a">Company</Menu.Item>
-						<Menu.Item as="a">Careers</Menu.Item>
-						{/* <Menu.Item as="a">Log in</Menu.Item>
-						<Menu.Item as="a">Sign Up</Menu.Item> */}
+					{
+						this.props.homeBanner &&
+						<Button as={Link} to="/dash/new/edit">
+							New
+						</Button>
+					}
+						
 					</Sidebar>
 
 					<Sidebar.Pusher
@@ -149,7 +193,13 @@ class MobileContainer extends Component {
 						<Segment
 							inverted
 							textAlign="center"
-							style={{ minHeight:  this.props.isHome ? "350" : "50", padding: "1em 0em" }}
+							style={{ 
+								minHeight:  this.props.isHome ? "350" : "50", 
+								padding: "1em 0em",
+								backgroundImage: this.props.homeBanner ? "url(https://source.unsplash.com/collection/3390539/1600x900)" : "none",
+								backgroundSize: "cover",
+								backgroundPosition: "70% 50%", 
+								}}
 							vertical
 						>
 							<Container>
@@ -158,21 +208,54 @@ class MobileContainer extends Component {
 										<Icon name="sidebar" />
 									</Menu.Item>
 									<Menu.Item position="right">
-										<Button as="a" inverted>
-											Log in
+									{
+										this.props.homeBanner &&
+										<Button as={Link} to="/dash/new/edit">
+											New
 										</Button>
-										<Button as="a" inverted style={{ marginLeft: "0.5em" }}>
-											Sign Up
-										</Button>
+									}
 									</Menu.Item>
 								</Menu>
 							</Container>
 							{this.props.homeBanner && this.props.homeBanner}
 						</Segment>
-
 						{children}
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
+				<Segment inverted vertical style={{ padding: "4em 0em", marginTop: "2em" }}>
+					<Container>
+						<Grid divided inverted stackable>
+							<Grid.Row>
+								<Grid.Column width={3}>
+									<Header inverted as="h4" content="About" />
+									<List link inverted>
+										<List.Item as="a">Sitemap</List.Item>
+										<List.Item as="a">Contact Us</List.Item>
+										<List.Item as="a">Religious Ceremonies</List.Item>
+										<List.Item as="a">Gazebo Plans</List.Item>
+									</List>
+								</Grid.Column>
+								<Grid.Column width={3}>
+									<Header inverted as="h4" content="Services" />
+									<List link inverted>
+										<List.Item as="a">Banana Pre-Order</List.Item>
+										<List.Item as="a">DNA FAQ</List.Item>
+										<List.Item as="a">How To Access</List.Item>
+										<List.Item as="a">Favorite X-Men</List.Item>
+									</List>
+								</Grid.Column>
+								<Grid.Column width={7}>
+									<Header as="h4" inverted>
+										Footer Header
+									</Header>
+									<p>
+										Extra space for a call to action inside the footer that could help re-engage users.
+									</p>
+								</Grid.Column>
+							</Grid.Row>
+						</Grid>
+					</Container>
+				</Segment>
 			</Responsive>
 		);
 	}

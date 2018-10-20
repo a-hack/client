@@ -22,13 +22,13 @@ class App extends Component {
 	render() {
 		return (
 			<ResponsiveContainer>
-				<Container>
-					{ widgets.map(Widget => (
-						<Segment>
-							{ <Widget /> }
-						</Segment>
-					)) }
-				</Container>
+			<Container style={{marginTop: "2em"}}>
+				{ widgets.map(Widget => (
+					<Segment>
+						{ <Widget /> }
+					</Segment>
+				)) }
+			</Container>
 			</ResponsiveContainer>
 		);
 	}
