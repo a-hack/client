@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import enigma from "enigma.js";
 import schema from "enigma.js/schemas/12.20.0.json";
-
+import ResponsiveContainer from "../layouts/Container";
 
 class App extends Component {
 	constructor(props) {
@@ -29,7 +29,10 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>hello</div>
+			<ResponsiveContainer>
+				<div>hello</div>
+			</ResponsiveContainer>
+			
 		);
 	}
 }
