@@ -1,0 +1,20 @@
+.react-resizable-handle {
+	height: 20px;
+	width: 20px;
+	display: inline;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	cursor: se-resize;
+}
+
+.react-resizable-handle::after {
+	content: "";
+	position: absolute;
+	right: 3px;
+	bottom: 3px;
+	width: 5px;
+	height: 5px;
+	border-right: 2px solid rgba(0, 0, 0, 0.4);
+	border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+}
