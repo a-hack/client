@@ -41,6 +41,9 @@ class QlikConnection {
 					{
 						qDef: { qFieldDefs: ["Indicator"] },
 					},
+					{
+						qDef: { qFieldDefs: ["Lead entity"] },
+					},
 				],
 				qMeasures: [
 					{
