@@ -19,7 +19,9 @@ export default class Scatter extends Component {
 	}
 
 	componentDidMount() {
+		// this.q.getBox((data) => {
 		this.renderGraph.call(this);
+		// });
 	}
 	
 	renderGraph() {
@@ -36,11 +38,10 @@ export default class Scatter extends Component {
 			],
 		}];
 		this.create([]);
-		// this.q.getBox((data) => {
+
 		setTimeout(() => {
 			this.update(data);
 		}, 100);
-		// });
 	}
 
 	update(data) {
