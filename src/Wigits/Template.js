@@ -9,6 +9,10 @@ export default class Template extends Component {
 	}
 
 	render() {
-		return (<div>test</div>);
+		return (
+			<div>
+				test
+			</div>
+		);
 	}
 }

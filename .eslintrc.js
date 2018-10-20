@@ -40,6 +40,8 @@ module.exports = {
 		"react/forbid-prop-types": "off",
 		"react/jsx-no-bind": "off",
 		"react/jsx-filename-extension": "off",
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
 		"react/no-danger": "off",
 		"react/no-unused-prop-types": "off"
 	}
