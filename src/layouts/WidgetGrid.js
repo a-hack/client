@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { WidthProvider, Responsive } from "react-grid-layout";
-import { Segment } from "semantic-ui-react";
 
 import widgets from "../widgets";
 
@@ -45,7 +44,6 @@ export default class Grid extends Component {
 		this.state = {
 			layout: Object.values(w).map(({ location }) => location),
 			breakpoint: undefined,
-			layout: undefined,
 			cols: props.cols,
 		};
 

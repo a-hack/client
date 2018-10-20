@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "semantic-ui-react";
 
-import WidgetGrid from "../layouts/Grid";
+import WidgetGrid from "../layouts/WidgetGrid";
 import QlikConnection from "../utils/QlikConnection";
 
 const config = {
