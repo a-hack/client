@@ -16,9 +16,14 @@ class QlikConnection {
 		// open the socket and eventually receive the QIX global API, and then close
 		// the session:
 		session.open().then((global) => {
-			return global.openDoc("0b0fc6d5-05ce-44d7-95aa-80d0680b3559").then((doc) => {
-
-				}
+			global.openDoc("0b0fc6d5-05ce-44d7-95aa-80d0680b3559").then((doc) => {
+				doc.getObject("").then(api => {
+					api.getLayout().then(() => {
+						api.getProperties().then((props) => {
+							console.log(props);
+						});
+					});
+				});
 			});
 		})
 			.catch(err => console.log("Something went wrong :(", err));
