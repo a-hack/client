@@ -22,39 +22,6 @@ import "semantic-ui-css/semantic.min.css";
 /* Heads up! HomepageHeading uses inline styling, however it"s not the best practice. Use CSS or styled components for
  * such things.
  */
-const HomepageHeading = ({ mobile }) => (
-	<Container text>
-		<Header
-			as="h1"
-			content="D-A-Team"
-			inverted
-			style={{
-				fontSize: mobile ? "2em" : "4em",
-				fontWeight: "normal",
-				marginBottom: 0,
-				marginTop: mobile ? "1.5em" : "3em",
-			}}
-		/>
-		<Header
-			as="h2"
-			content="Do whatever you want when you want to."
-			inverted
-			style={{
-				fontSize: mobile ? "1.5em" : "1.7em",
-				fontWeight: "normal",
-				marginTop: mobile ? "0.5em" : "1.5em",
-			}}
-		/>
-		<Button primary size="huge">
-			Get Started
-			<Icon name="right arrow" />
-		</Button>
-	</Container>
-);
-
-HomepageHeading.propTypes = {
-	mobile: PropTypes.bool.isRequired,
-};
 
 /* Heads up!
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
@@ -92,7 +59,7 @@ class DesktopContainer extends Component {
 					<Segment
 						inverted
 						textAlign="center"
-						style={{ minHeight: 700, padding: "1em 0em" }}
+						style={{ minHeight: this.props.isHome ? "700" : "70", padding: "1em 0em" }}
 						vertical
 					>
 						<Menu
@@ -119,7 +86,7 @@ class DesktopContainer extends Component {
 								</Menu.Item>
 							</Container>
 						</Menu>
-						<HomepageHeading />
+					{this.props.homeBanner && this.props.homeBanner}
 					</Segment>
 				</Visibility>
 
@@ -131,6 +98,7 @@ class DesktopContainer extends Component {
 
 DesktopContainer.propTypes = {
 	children: PropTypes.node.isRequired,
+	homeBanner: PropTypes.func,
 };
 
 class MobileContainer extends Component {
@@ -181,7 +149,7 @@ class MobileContainer extends Component {
 						<Segment
 							inverted
 							textAlign="center"
-							style={{ minHeight: 350, padding: "1em 0em" }}
+							style={{ minHeight:  this.props.isHome ? "350" : "50", padding: "1em 0em" }}
 							vertical
 						>
 							<Container>
@@ -199,7 +167,7 @@ class MobileContainer extends Component {
 									</Menu.Item>
 								</Menu>
 							</Container>
-							<HomepageHeading mobile />
+							{this.props.homeBanner && this.props.homeBanner}
 						</Segment>
 
 						{children}
@@ -212,17 +180,19 @@ class MobileContainer extends Component {
 
 MobileContainer.propTypes = {
 	children: PropTypes.node.isRequired,
+	homeBanner: PropTypes.func,
 };
 
-const ResponsiveContainer = ({ children }) => (
+const ResponsiveContainer = ({ children, banner }) => (
 	<div>
-		<DesktopContainer>{children}</DesktopContainer>
-		<MobileContainer>{children}</MobileContainer>
+		<DesktopContainer homeBanner={banner}>{children}</DesktopContainer>
+		<MobileContainer homeBanner={banner}>{children}</MobileContainer>
 	</div>
 );
 
 ResponsiveContainer.propTypes = {
 	children: PropTypes.node.isRequired,
+	banner: PropTypes.func,
 };
 
 export default ResponsiveContainer
