@@ -141,8 +141,7 @@ export default class Template extends Component {
 				ref={(reference) => {
 					this.reference = reference;
 				}}
-			>
-			</div>
+			/>
 		);
 	}
 }
