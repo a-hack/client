@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import HomepageLayout from "./components/HomepageLayout"
+import HomepageLayout from "./layouts/HomepageLayout";
 
 class App extends Component {
   render() {

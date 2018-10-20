@@ -15,6 +15,7 @@ import {
 	Sidebar,
 	Visibility,
 } from 'semantic-ui-react'
+import GridLayout from 'react-grid-layout';
 import 'semantic-ui-css/semantic.min.css';
 
 /* eslint-disable react/no-multi-comp */
@@ -25,7 +26,7 @@ const HomepageHeading = ({ mobile }) => (
 	<Container text>
 		<Header
 			as='h1'
-			content='Imagine-a-Company'
+			content='D-A-Team'
 			inverted
 			style={{
 				fontSize: mobile ? '2em' : '4em',
