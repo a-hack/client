@@ -12,13 +12,34 @@ class QlikConnection {
 
 		const properties = {
 			qInfo: {
-				qType: 'visualization',
-				qId: '',
+				qType: "visualization",
+				qId: "",
 			},
 			qHyperCubeDef: {
 				qDimensions: [
 					{
-						qDef: {qFieldDefs: ['Goal ID']},
+						qDef: { qFieldDefs: ["Goal ID"] },
+					},
+					{
+						qDef: { qFieldDefs: ["Country"] },
+					},
+					{
+						qDef: { qFieldDefs: ["SDG Target"] },
+					},
+					{
+						qDef: { qFieldDefs: ["Ocean Basins"] },
+					},
+					{
+						qDef: { qFieldDefs: ["Lead entity type"] },
+					},
+					{
+						qDef: { qFieldDefs: ["Commitment Title"] },
+					},
+					{
+						qDef: { qFieldDefs: ["Partners"] },
+					},
+					{
+						qDef: { qFieldDefs: ["Indicator"] },
 					},
 				],
 				qMeasures: [
