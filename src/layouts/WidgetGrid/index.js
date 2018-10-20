@@ -8,7 +8,7 @@ import widgets from "../../widgets";
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
-export default class Grid extends Component {
+export default class WidgetGrid extends Component {
 	static defaultProps = {
 		cols: {
 			lg: 12, md: 10, sm: 6, xs: 4, xxs: 2,
