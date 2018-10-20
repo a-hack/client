@@ -61,7 +61,8 @@ HomepageHeading.propTypes = {
  * It can be more complicated, but you can create really flexible markup.
  */
 class DesktopContainer extends Component {
-	constructor() {
+	constructor(props) {
+		super(props);
 		this.state = {};
 	}
 
@@ -129,11 +130,12 @@ DesktopContainer.propTypes = {
 };
 
 class MobileContainer extends Component {
-	constructor() {
+	constructor(props) {
+		super(props);
 		this.state = {};
 	}
 
-	handlePusherClick () {
+	handlePusherClick() {
 		const { sidebarOpened } = this.state;
 
 		if (sidebarOpened) this.setState({ sidebarOpened: false });
@@ -196,7 +198,7 @@ class MobileContainer extends Component {
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
 			</Responsive>
-		)
+		);
 	}
 }
 
@@ -209,7 +211,7 @@ const ResponsiveContainer = ({ children }) => (
 		<DesktopContainer>{children}</DesktopContainer>
 		<MobileContainer>{children}</MobileContainer>
 	</div>
-)
+);
 
 ResponsiveContainer.propTypes = {
 	children: PropTypes.node.isRequired,
@@ -337,5 +339,5 @@ const HomepageLayout = () => (
 			</Container>
 		</Segment>
 	</ResponsiveContainer>
-)
+);
 export default HomepageLayout;
