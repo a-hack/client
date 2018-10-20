@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import QlikConnection from "../utils/QlikConnection";
+import { Container, Segment } from "semantic-ui-react";
 
+import widgets from "../widgets";
 
 class App extends Component {
 	constructor(props) {
@@ -10,7 +12,13 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>hello</div>
+			<Container>
+				{ widgets.map(Widget => (
+					<Segment>
+						{ <Widget /> }
+					</Segment>
+				)) }
+			</Container>
 		);
 	}
 }
