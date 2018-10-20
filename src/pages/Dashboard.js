@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import enigma from "enigma.js";
 import schema from "enigma.js/schemas/12.20.0.json";
-import qlikConnect from "../utils/QlickConnection";
+import qlikConnect from "../utils/QlikConnection";
 
 
 class App extends Component {
