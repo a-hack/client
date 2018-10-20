@@ -51,8 +51,6 @@ export default class Template extends Component {
 	}
 
 	create(data) {
-		const target = document.createElement("div");
-		document.getElementById("test").appendChild(target);
 		const pic = picasso({
 			style: {
 				"$font-size": "12px",
@@ -136,8 +134,7 @@ export default class Template extends Component {
 		const { data } = this.state;
 		return (
 			<div
-				id="test"
-				style={{ height: "500px" }}
+				style={{ height: "100%" }}
 				ref={(reference) => {
 					this.reference = reference;
 				}}

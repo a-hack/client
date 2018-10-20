@@ -1,10 +1,37 @@
 import React, { Component } from "react";
+import { Container } from "semantic-ui-react";
+
+import WidgetGrid from "../layouts/Grid";
 import QlikConnection from "../utils/QlikConnection";
-import { Container, Segment } from "semantic-ui-react";
 
-import widgets from "../widgets";
+const config = {
+	widgets: {
+		tsratsar: {
+			location: {
+				i: "tsratsar",
+				x: 0,
+				y: 0,
+				w: 4,
+				h: 4,
+			},
+			config: {},
+			type: "Template",
+		},
+		artsarst: {
+			location: {
+				i: "artsarst",
+				x: 0,
+				y: 0,
+				w: 8,
+				h: 2,
+			},
+			config: {},
+			type: "Template",
+		},
+	},
+};
 
-class App extends Component {
+class Dashboard extends Component {
 	constructor(props) {
 		super(props);
 		this.q = new QlikConnection();
@@ -13,14 +40,10 @@ class App extends Component {
 	render() {
 		return (
 			<Container>
-				{ widgets.map(Widget => (
-					<Segment>
-						{ <Widget /> }
-					</Segment>
-				)) }
+				<WidgetGrid q="hullO" save={() => {}} config={config} />
 			</Container>
 		);
 	}
 }
 
-export default App;
+export default Dashboard;

@@ -1,5 +1,5 @@
 import Template from "./Template";
 
-export default [
+export default {
 	Template,
-];
+};
