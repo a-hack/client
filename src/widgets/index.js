@@ -1,5 +1,9 @@
 import Template from "./Template";
 
 export default {
-	Template,
+	Template: {
+		name: "Template",
+		img: "template.jpeg",
+		component: Template,
+	},
 };

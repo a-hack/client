@@ -66,7 +66,7 @@ export default class Grid extends Component {
 	}
 
 	widgetToGridItem({ location, config, type }) {
-		const Widget = widgets[type];
+		const Widget = widgets[type].component;
 		const { q, save } = this.props;
 
 		const { i } = location;
