@@ -1,8 +1,6 @@
 module.exports = {
 	"extends": "airbnb",
-	"eslintConfig": {
 	"parser": "babel-eslint",
-	"extends": "airbnb",
 	"globals": {
 		"__DEV__": true
 	},
@@ -16,11 +14,9 @@ module.exports = {
 		],
 		"indent": [
 			"error",
-			4,
-			{
-				"SwitchCase": 1
-			}
+			"tab",
 		],
+		"no-tabs": "off",
 		"quotes": [
 			"error",
 			"double",
@@ -43,16 +39,7 @@ module.exports = {
 		"react/forbid-prop-types": "off",
 		"react/jsx-no-bind": "off",
 		"react/jsx-filename-extension": "off",
-		"react/jsx-indent": [
-			2,
-			4
-		],
-		"react/jsx-indent-props": [
-			2,
-			4
-		],
 		"react/no-danger": "off",
 		"react/no-unused-prop-types": "off"
 	}
-	},
 };
