@@ -4,6 +4,7 @@ import { WidgetProps } from "../consts";
 
 export default class Scatter extends Component {
 	static props = WidgetProps;
+
 	constructor(props) {
 		super(props);
 		this.state = {xaxis:'Sales',
@@ -19,9 +20,7 @@ export default class Scatter extends Component {
 	}
 
 	componentDidMount() {
-		// this.q.getBox((data) => {
 		this.renderGraph.call(this);
-		// });
 	}
 	
 	renderGraph() {
@@ -38,10 +37,11 @@ export default class Scatter extends Component {
 			],
 		}];
 		this.create([]);
-
+		// this.q.getBox((data) => {
 		setTimeout(() => {
 			this.update(data);
 		}, 100);
+		// });
 	}
 
 	update(data) {
@@ -49,7 +49,8 @@ export default class Scatter extends Component {
 	}
 
 	create(data) {
-		var size, colour;
+		var hasSize, hasColour, hasX, hasY,
+			xaxisCol,yaxisCol,colourCol,sizeCol;
 		
 		const target = document.createElement("div");
 		document.getElementById("test").appendChild(target);
@@ -61,10 +62,26 @@ export default class Scatter extends Component {
 			},
 		});
 		
-		const colNames = ["Year", "Month", "Sales", "Margin"];//data[0] ? data[0] : [];
+		const colNames = ["Sales", "Margin","Year", "Month"];//data[0] ? data[0] : [];
 		
-		var size = colNames.includes(this.state.size) ? {scale : this.state.size} : 1;
-		var colour = colNames.includes(this.state.colour) ? {scale : this.state.colour} : "#0000FF";
+		hasSize = colNames.includes(this.state.size);
+		hasColour = colNames.includes(this.state.colour);
+		hasX = colNames.includes(this.state.xaxis);
+		hasY = colNames.includes(this.state.yaxis);
+		
+		xaxisCol = hasX ? this.state.xaxis : colNames[0];
+		yaxisCol = hasY ? this.state.yaxis : colNames[0];
+		colourCol = hasColour ? this.state.colour : "";
+		sizeCol = hasSize ? this.state.size : "";
+		this.setState({
+			xaxis:xaxisCol,
+			yaxis:yaxisCol,
+			colour:colourCol,
+			size:sizeCol 
+		});
+		
+		console.log(xaxisCol);
+		console.log(yaxisCol);
 		
 		this.chart = pic.chart({
 			element: this.reference,
@@ -73,17 +90,17 @@ export default class Scatter extends Component {
 				scales: {
 					x: {
 						data: {
-							field: this.state.xaxis,
+							field: xaxisCol,
 						}
 					},
 					y: {
 						data: {
-							field: this.state.yaxis,
+							field: yaxisCol,
 						},
 						invert : true
 					},
 					col: {
-						data: { extract: { field: this.state.colour }},
+						data: { extract: { field: hasColour ? this.state.colour : colNames[0]}},
 						type: "color",
 					},
 					size: {
@@ -109,8 +126,10 @@ export default class Scatter extends Component {
 						extract: {
 							field: "Month",
 							props: {
-								y: { field: this.state.yaxis },
-								x: { field: this.state.xaxis },
+								y: { field: yaxisCol },
+								x: { field: xaxisCol },
+								fill : {field: hasColour ? colourCol : colNames[0]},
+								size : {field: hasSize ? sizeCol : colNames[0]}
 							},
 						},
 					},
@@ -118,11 +137,11 @@ export default class Scatter extends Component {
 						x: { scale: 'x' },
 						y: { scale: 'y' },
 						shape: "circle",
-						size: size,
-						fill: colour,
+						size : hasSize ? {scale : 'size'} : 1,
+						fill : hasColour ? {scale : 'col'} : "#0000FF",
 					},
 				}],
-			},
+			}, 
 			created() {
 				console.log("Chart was created");
 			},
@@ -136,7 +155,7 @@ export default class Scatter extends Component {
 	render() {
 		const { data } = this.state;
 		return (
-			<div style={{ border:"50px", margin:"50px", width:"400px", height: "400px" }}>
+			<div style={{ border:"50px", margin:"50px", width:"400px", height: "300px" }}>
 				<div
 					id="test"
 					style={{ position:"relative", width:"100%", height: "100%" }}
