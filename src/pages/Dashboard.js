@@ -1,10 +1,17 @@
-import React, {Component} from "react";
-import {Button, Header, Icon, Image, Menu, Segment, Container} from "semantic-ui-react";
+import React, { Component } from "react";
+import {
+	Button,
+	Container,
+	Icon,
+	Menu,
+} from "semantic-ui-react";
 
-import WidgetGrid from "../layouts/WidgetGrid";
 import QlikConnection from "../utils/QlikConnection";
-import "semantic-ui-css/semantic.min.css";
+import ResponsiveContainer from "../layouts/Container";
 import SideMenu from "../components/SideMenu";
+import WidgetGrid from "../layouts/WidgetGrid";
+
+import "semantic-ui-css/semantic.min.css";
 
 const config = {
 	widgets: {
@@ -36,14 +43,22 @@ const config = {
 class Dashboard extends Component {
 	constructor(props) {
 		super(props);
-		this.q = new QlikConnection();
 		this.state = { visible: false };
+
 		this.handleShowHide = this.handleShowHide.bind(this);
 		this.handleSidebarHide = this.handleSidebarHide.bind(this);
+
+		this.con = new QlikConnection();
+	}
+
+	componentDidMount() {
+		this.con.getQ().then((q) => {
+			this.setState({ q });
+		});
 	}
 
 	handleShowHide() {
-		this.setState({ visible: !this.state.visible });
+		this.setState(({ visible }) => ({ visible: !visible }));
 	}
 
 	handleSidebarHide() {
@@ -51,26 +66,40 @@ class Dashboard extends Component {
 	}
 
 	render() {
+		const { q, visible } = this.state;
 		return (
-			<SideMenu
-				as={Menu}
-				animation="uncover"
-				icon="labeled"
-				inverted
-				onHide={this.handleSidebarHide}
-				vertical
-				visible={this.state.visible}
-				width="thin"
-				style={{height: "100vh"}}
-			>
-				<Container fluid>
-					<Button icon secondary attached="right" onClick={this.handleShowHide}>
-						<Icon name='filter'/>
-					</Button>
-					<WidgetGrid q="hullO" save={() => {
-					}} config={config}/>
-				</Container>
-			</SideMenu>
+			<ResponsiveContainer>
+				<SideMenu
+					as={Menu}
+					animation="uncover"
+					icon="labeled"
+					inverted
+					onHide={this.handleSidebarHide}
+					vertical
+					visible={visible}
+					width="thin"
+					style={{
+						marginTop: "2em",
+						height: "100vh",
+					}}
+				>
+					<Container fluid>
+						<Button
+							icon
+							secondary
+							attached="right"
+							onClick={this.handleShowHide}
+						>
+							<Icon name="filter" />
+						</Button>
+						<WidgetGrid
+							q={q}
+							save={() => {}}
+							config={config}
+						/>
+					</Container>
+				</SideMenu>
+			</ResponsiveContainer>
 		);
 	}
 }
