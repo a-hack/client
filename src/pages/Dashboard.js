@@ -11,68 +11,6 @@ import { get, save } from "../utils/layout-api";
 
 import "semantic-ui-css/semantic.min.css";
 
-const config = {
-	widgets: {
-		tsratsar: {
-			location: {
-				i: "tsratsar",
-				x: 0,
-				y: 0,
-				w: 4,
-				h: 4,
-			},
-			config: {},
-			type: "WorldMap",
-		},
-		x: {
-			location: {
-				i: "x",
-				x: 0,
-				y: 0,
-				w: 4,
-				h: 4,
-			},
-			config: {},
-			type: "Bar",
-		},
-		b: {
-			location: {
-				i: "b",
-				x: 0,
-				y: 0,
-				w: 4,
-				h: 4,
-			},
-			config: {},
-			type: "CountryTable",
-		},
-		a: {
-			location: {
-				i: "a",
-				x: 0,
-				y: 0,
-				w: 4,
-				h: 4,
-			},
-			config: {},
-			type: "AppTemplate",
-		},
-		artsarst: {
-			location: {
-				i: "artsarst",
-				x: 0,
-				y: 0,
-				w: 8,
-				h: 2,
-			},
-			config: {},
-			type: "Template",
-		},
-
-	},
-};
-
-// eslint-disable-next-line no-unused-vars
 function generateBaseConfig(type) {
 	// eslint-disable-next-line no-bitwise
 	const i = ((Math.random() * 100000000) | 0).toString();
@@ -112,6 +50,7 @@ class Dashboard extends Component {
 		this.add = this.add.bind(this);
 		this.save = this.save.bind(this);
 		this.updateLayout = this.updateLayout.bind(this);
+		this.updateWidgetConfig = this.updateWidgetConfig.bind(this);
 
 		this.con = new QlikConnection();
 		this.conApi = new QlikRequire();
@@ -154,6 +93,16 @@ class Dashboard extends Component {
 				newWidgets[i].location = Object.assign(location, layout);
 			});
 		});
+	}
+
+	updateWidgetConfig(i) {
+		return (newConfig) => {
+			this.setState(({ config: { widgets } }) => {
+				const newWidgets = Object.assign({}, widgets);
+				const { config } = newWidgets[i];
+				newWidgets[i].config = Object.assign(config, newConfig);
+			});
+		};
 	}
 
 	add(type) {
@@ -251,6 +200,7 @@ class Dashboard extends Component {
 								config={config}
 								error={error}
 								updateLayout={this.updateLayout}
+								updateWidgetConfig={this.updateWidgetConfig}
 							/>
 						</Container>
 					</SideMenu>
