@@ -78,7 +78,7 @@ export default class WidgetGrid extends Component {
 
 		return (
 			<div
-				style={{ border: "1px solid green" }}
+				style={{ border: "1px solid rgba(0, 0, 0, 0.2)" }}
 				key={i}
 				data-grid={location}
 			>
@@ -89,6 +89,7 @@ export default class WidgetGrid extends Component {
 					config={config}
 					q={q}
 					save={save}
+					updateConfig={this.props.updateWidgetConfig(i)}
 				/>
 			</div>
 		);
@@ -110,7 +111,6 @@ export default class WidgetGrid extends Component {
 
 		return (
 			<ResponsiveReactGridLayout
-				style={{ border: "1px solid red" }}
 				onLayoutChange={this.onLayoutChange}
 				onBreakpointChange={this.onBreakpointChange}
 				{...this.props}
