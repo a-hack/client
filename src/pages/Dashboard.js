@@ -7,6 +7,7 @@ import QlikRequire from "../utils/QlikRequire";
 import ResponsiveContainer from "../layouts/Container";
 import SideMenu from "../components/SideMenu";
 import WidgetGrid from "../layouts/WidgetGrid";
+import { get, save } from "../utils/layout-api";
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -81,7 +82,13 @@ function generateBaseConfig(type) {
 class Dashboard extends Component {
 	constructor(props) {
 		super(props);
+		console.log(props);
+
+		const {  match: { params: { hash } } } = props;
+
 		this.state = {
+			config: {},
+			hash,
 			visible: false,
 			visibleWidgets: false,
 		};
@@ -102,6 +109,7 @@ class Dashboard extends Component {
 		this.conApi.getApp().then((app) => {
 			this.setState({ app });
 		});
+		get(this.state.hash).then((config) => this.setState({ config }));
 	}
 
 	handleWidgetShowHide() {
