@@ -8,7 +8,14 @@ import Gauge from "./Gauge";
 import mapPicture from "../pictures/map.png";
 import piPicture from "../pictures/pi.png";
 import tablePicture from "../pictures/table.png";
+
 import Vertical from "./Vertical";
+
+import barPicture from "../pictures/bar.png";
+import linePicture from "../pictures/line.png";
+import textPicture from "../pictures/text.png";
+import gaugePicture from "../pictures/gauge.png";
+
 import Header from "./Header";
 import Line2 from "./Line2";
 import Commitment from "./Commitment";
@@ -37,7 +44,7 @@ export default {
 	},
 	Bar: {
 		name: "Bar",
-		img: "template.jpeg",
+		img: barPicture,
 		component: Bar,
 	},
 	Vertical: {
@@ -57,12 +64,12 @@ export default {
 	// },
 	Line2: {
 		name: "Line2",
-		img: "line.jpeg",
+		img: linePicture,
 		component: Line2,
 	},
 	Header: {
 		name: "Header",
-		img: "template.jpeg",
+		img: textPicture,
 		component: Header,
 	},
 	Commitment: {
@@ -77,7 +84,7 @@ export default {
 	},
 	Gauge: {
 		name: "Gauge",
-		img: "template.jpeg",
+		img: gaugePicture,
 		component: Gauge,
 	},
 };
