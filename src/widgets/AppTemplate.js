@@ -28,7 +28,6 @@ export default class Template extends Component {
 		return (
 			<div
 				style={{ height: "100%" }}
-				id="testaa"
 				ref={ref => this.ref = ref}
 			/>
 		);
