@@ -79,14 +79,14 @@ export default {
 		component: Header,
 	},
 	Commitment: {
-		name:"Commitment",
-		img:"Commit.jpeg",
-		component:Commitment,
+		name: "Commitment",
+		img: "Commit.jpeg",
+		component: Commitment,
 	},
 	Target: {
-		name:"Target",
-		img:"Target.jpeg",
-		component:Target,
+		name: "Target",
+		img: "Target.jpeg",
+		component: Target,
 	},
 	Gauge: {
 		name: "Gauge",

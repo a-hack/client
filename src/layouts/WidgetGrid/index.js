@@ -21,8 +21,8 @@ export default class WidgetGrid extends Component {
 	static propTypes = {
 		q: PropTypes.any.isRequired,
 		cols: PropTypes.object,
-		save: PropTypes.func.isRequired,
 		removeWidget: PropTypes.func.isRequired,
+		updateWidgetConfig: PropTypes.func.isRequired,
 		config: PropTypes.shape({
 			widgets: PropTypes.objectOf(
 				PropTypes.shape({
