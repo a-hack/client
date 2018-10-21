@@ -70,6 +70,7 @@ export default (props) => {
 				>
 					{Object.values(WidgetListItems).map((item) => (
 						<Item
+							onClick={props.add(item.name)}
 							key={item.name}
 							name={item.name}
 							img={item.img}
