@@ -121,6 +121,7 @@ export default class WidgetGrid extends Component {
 
 		return (
 			<ResponsiveReactGridLayout
+				containerPadding={[10, 10]}
 				draggableHandle=".awesome-dragging-handle-thing"
 				onLayoutChange={this.onLayoutChange}
 				onBreakpointChange={this.onBreakpointChange}
