@@ -3,49 +3,52 @@ import picasso from "picasso.js";
 import { WidgetProps } from "../consts";
 
 export default class Line extends Component {
-	static props = WidgetProps;
+	static propTypes = WidgetProps;
 
 	constructor(props) {
 		super(props);
 
-		var config = this.getConfig(), fields;
+		const config = this.getConfig(); let
+			fields;
 
-		if (props.hasOwnProperty('config')) {
-			if (props.config.hasOwnProperty('xaxis')) {
+		if (props.hasOwnProperty("config")) {
+			if (props.config.hasOwnProperty("xaxis")) {
 				config.xaxis = props.config.xaxis;
 			}
-			if (props.config.hasOwnProperty('yaxis')) {
+			if (props.config.hasOwnProperty("yaxis")) {
 				config.yaxis = props.config.yaxis;
 			}
-			if (props.config.hasOwnProperty('size')) {
+			if (props.config.hasOwnProperty("size")) {
 				config.size = props.config.size;
 			}
-			if (props.config.hasOwnProperty('colour')) {
+			if (props.config.hasOwnProperty("colour")) {
 				config.colour = props.config.colour;
 			}
 		}
 
-		if (props.config.hasOwnProperty('fields')) {
+		if (props.config.hasOwnProperty("fields")) {
 			fields = props.fields;
 		} else {
 			fields = this.defaultFields();
 		}
 
 		this.state = {
-			xaxis: '',
-			yaxis: '',
-			size: '',
-			colour: '',
-			fields: fields
+			xaxis: "",
+			yaxis: "",
+			size: "",
+			colour: "",
+			fields,
 		};
 	}
 
 	getConfig() {
-		return { xaxis: '', yaxis: '', size: '', colour: '' }
+		return {
+			xaxis: "", yaxis: "", size: "", colour: "",
+		};
 	}
 
 	handleChange(name, event) {
-		var m = {};
+		const m = {};
 		m[name] = event.target.value;
 		this.setState(m);
 	}
@@ -121,7 +124,6 @@ export default class Line extends Component {
 
 		q.createSessionObject(barchartProperties).then(model => {
 			model.getLayout().then(info => {
-
 				const newData = [{
 					type: "matrix",
 					data: [
@@ -139,7 +141,6 @@ export default class Line extends Component {
 				this.update(newData);
 			});
 		});
-
 	}
 
 	update(data) {
@@ -147,8 +148,11 @@ export default class Line extends Component {
 	}
 
 	create(data) {
-		var hasSize, hasColour, hasX, hasY,
-			xaxisCol, yaxisCol, colourCol, sizeCol;
+		let hasSize; let hasColour; let hasX; let hasY;
+
+
+		let xaxisCol; let yaxisCol; let colourCol; let
+			sizeCol;
 
 		const target = document.createElement("div");
 		document.getElementById("test").appendChild(target);
@@ -160,7 +164,7 @@ export default class Line extends Component {
 			},
 		});
 
-		const colNames = this.state.fields;//data[0] ? data[0] : [];
+		const colNames = this.state.fields;// data[0] ? data[0] : [];
 
 		hasSize = colNames.includes(this.state.size);
 		hasColour = colNames.includes(this.state.colour);
@@ -175,7 +179,7 @@ export default class Line extends Component {
 			xaxis: xaxisCol,
 			yaxis: yaxisCol,
 			colour: colourCol,
-			size: sizeCol
+			size: sizeCol,
 		});
 
 		this.chart = pic.chart({
@@ -185,15 +189,15 @@ export default class Line extends Component {
 				scales: {
 					x: {
 						data: {
-							extract: { field: xaxisCol }
-						}
+							extract: { field: xaxisCol },
+						},
 					},
 					y: {
 						data: {
 							field: yaxisCol,
 						},
-						invert: true
-					}
+						invert: true,
+					},
 				},
 				components: [{
 					key: "y-axis",
@@ -212,19 +216,19 @@ export default class Line extends Component {
 						extract: {
 							field: xaxisCol,
 							props: {
-								v: { field: yaxisCol }
-							}
-						}
+								v: { field: yaxisCol },
+							},
+						},
 					},
 					settings: {
 						coordinates: {
-							major: { scale: 'x' },
-							minor: { scale: 'y', ref: 'v' }
-						}
+							major: { scale: "x" },
+							minor: { scale: "y", ref: "v" },
+						},
 					},
 					layers: {
-						line: {}
-					}
+						line: {},
+					},
 				}],
 			},
 			created() {
@@ -240,7 +244,10 @@ export default class Line extends Component {
 	render() {
 		const { data } = this.state;
 		return (
-			<div style={{ border: "50px", margin: "50px", width: "400px", height: "300px" }}>
+			<div style={{
+				border: "50px", margin: "50px", width: "400px", height: "300px",
+			}}
+			>
 				<span>
 					<div
 						id="test"
@@ -287,7 +294,7 @@ export default class Line extends Component {
 							{[""].concat(this.state.fields).map((val) => <option key={val} value={val}>{val}</option>)}
 						</select>
 					</div>
-					<input type="button" value="Clickme" onClick={this.renderGraph.bind(this)}></input>
+					<input type="button" value="Clickme" onClick={this.renderGraph.bind(this)} />
 				</span>
 			</div>
 		);

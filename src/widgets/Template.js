@@ -3,7 +3,7 @@ import picasso from "picasso.js";
 import { WidgetProps } from "../consts";
 
 export default class Template extends Component {
-	static props = WidgetProps;
+	static propTypes = WidgetProps;
 
 	constructor(props) {
 		super(props);
@@ -131,7 +131,6 @@ export default class Template extends Component {
 
 
 	render() {
-		const { data } = this.state;
 		return (
 			<div
 				style={{ height: "100%" }}

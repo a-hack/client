@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Container, Grid, Header, Icon, Segment } from "semantic-ui-react";
+import {
+	Button, Container, Grid, Header, Icon, Segment,
+} from "semantic-ui-react";
 import ResponsiveContainer from "../layouts/Container";
 import "semantic-ui-css/semantic.min.css";
 

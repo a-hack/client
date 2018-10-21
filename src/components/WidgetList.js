@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Image, Menu, Sidebar } from "semantic-ui-react";
 import WidgetListItems from "../widgets/index";
@@ -15,20 +15,12 @@ Item.propTypes = {
 	img: PropTypes.string.isRequired,
 };
 
-class WidgetList extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<Sidebar
-				{...this.props}
-			>
-				{Object.values(WidgetListItems).map((item) => <Item key={item.name} name={item.name} img={item.img} />)}
-			</Sidebar>
-		);
-	}
+export default function (props) {
+	return (
+		<Sidebar
+			{...props}
+		>
+			{Object.values(WidgetListItems).map((item) => <Item key={item.name} name={item.name} img={item.img} />)}
+		</Sidebar>
+	);
 }
-
-export default WidgetList;

@@ -190,10 +190,12 @@ class MobileContainer extends Component {
 							Home
 						</Menu.Item>
 						{
-							homeBanner &&
-							<Button as={Link} to="/dash/new/edit">
+							homeBanner
+							&& (
+								<Button as={Link} to="/dash/new/edit">
 								New
-							</Button>
+								</Button>
+							)
 						}
 
 					</Sidebar>
@@ -291,7 +293,7 @@ MobileContainer.propTypes = {
 	isHome: PropTypes.bool,
 };
 
-const ResponsiveContainer = ({ children, banner, footer = true }) => (
+const ResponsiveContainer = ({ children, banner, footer }) => (
 	<div>
 		<DesktopContainer
 			footer={footer}
@@ -312,6 +314,10 @@ ResponsiveContainer.propTypes = {
 	children: PropTypes.node.isRequired,
 	banner: PropTypes.element.isRequired,
 	footer: PropTypes.bool,
+};
+
+ResponsiveContainer.defaultProps = {
+	footer: false,
 };
 
 export default ResponsiveContainer;

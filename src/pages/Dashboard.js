@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Button, Container, Icon, Menu, } from "semantic-ui-react";
+import {
+	Button, Container, Icon, Menu,
+} from "semantic-ui-react";
 import QlikConnection from "../utils/QlikConnection";
 import QlikRequire from "../utils/QlikRequire";
 import ResponsiveContainer from "../layouts/Container";
@@ -57,7 +59,9 @@ const config = {
 	},
 };
 
+// eslint-disable-next-line no-unused-vars
 function generateBaseConfig(type) {
+	// eslint-disable-next-line no-bitwise
 	const i = (Math.random() * 100000000) | 0;
 	return {
 		[i]: {
@@ -117,7 +121,9 @@ class Dashboard extends Component {
 	}
 
 	render() {
-		const { app, q, visible, visibleWidgets } = this.state;
+		const {
+			app, q, visible, visibleWidgets,
+		} = this.state;
 		if (app && q) {
 			return (
 				<ResponsiveContainer footer={false}>
@@ -173,10 +179,9 @@ class Dashboard extends Component {
 						</Container>
 					</SideMenu>
 				</ResponsiveContainer>
-			)
-		} else {
-			return <div></div>;
+			);
 		}
+		return <div />;
 	}
 }
 

@@ -3,7 +3,7 @@ import picasso from "picasso.js";
 import { WidgetProps } from "../consts";
 
 export default class Scatter extends Component {
-	static props = WidgetProps;
+	static propTypes = WidgetProps;
 
 	constructor(props) {
 		super(props);
@@ -48,7 +48,7 @@ export default class Scatter extends Component {
 	}
 
 	handleChange(name, event) {
-		let m = {};
+		const m = {};
 		m[name] = event.target.value;
 		this.setState(m);
 	}
@@ -124,7 +124,6 @@ export default class Scatter extends Component {
 
 		q.createSessionObject(barchartProperties).then(model => {
 			model.getLayout().then(info => {
-
 				const newData = [{
 					type: "matrix",
 					data: [
@@ -142,7 +141,6 @@ export default class Scatter extends Component {
 				this.update(newData);
 			});
 		});
-
 	}
 
 	update(data) {
@@ -222,7 +220,7 @@ export default class Scatter extends Component {
 								y: { field: yaxisCol },
 								x: { field: xaxisCol },
 								fill: { field: hasColour ? colourCol : colNames[0] },
-								size: { field: hasSize ? sizeCol : colNames[0] }
+								size: { field: hasSize ? sizeCol : colNames[0] },
 							},
 						},
 					},
@@ -298,7 +296,7 @@ export default class Scatter extends Component {
 							{[""].concat(this.state.fields).map((val) => <option key={val} value={val}>{val}</option>)}
 						</select>
 					</div>
-					<input type="button" value="Clickme" onClick={this.renderGraph.bind(this)}></input>
+					<input type="button" value="Clickme" onClick={this.renderGraph.bind(this)} />
 				</span>
 			</div>
 		);

@@ -1,6 +1,12 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Icon, Image, Menu, Segment, Sidebar } from "semantic-ui-react";
+import {
+	Icon,
+	Image,
+	Menu,
+	Segment,
+	Sidebar,
+} from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import WidgetListItems from "../widgets/index";
 
@@ -13,6 +19,7 @@ const SegmentNoMargin = (props) => (
 			border: "none",
 		}}
 	>
+		{/* eslint-disable-next-line react/destructuring-assignment */}
 		{props.children}
 	</Segment>
 );
@@ -61,11 +68,13 @@ export default (props) => {
 						height: "100vh",
 					}}
 				>
-					{Object.values(WidgetListItems).map((item) => (<Item
-						key={item.name}
-						name={item.name}
-						img={item.img}
-					/>))}
+					{Object.values(WidgetListItems).map((item) => (
+						<Item
+							key={item.name}
+							name={item.name}
+							img={item.img}
+						/>
+					))}
 				</Sidebar>
 				<Sidebar.Pusher>
 					{children}
