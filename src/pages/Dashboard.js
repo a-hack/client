@@ -87,7 +87,7 @@ class Dashboard extends Component {
 		const {  match: { params: { hash } } } = props;
 
 		this.state = {
-			config: {},
+			config: undefined,
 			hash,
 			visible: false,
 			visibleWidgets: false,
@@ -97,6 +97,7 @@ class Dashboard extends Component {
 		this.handleSidebarHide = this.handleSidebarHide.bind(this);
 		this.handleWidgetbarHide = this.handleWidgetbarHide.bind(this);
 		this.handleWidgetShowHide = this.handleWidgetShowHide.bind(this);
+		this.add = this.add.bind(this);
 
 		this.con = new QlikConnection();
 		this.conApi = new QlikRequire();
@@ -126,6 +127,13 @@ class Dashboard extends Component {
 
 	handleWidgetbarHide() {
 		this.setState({ visibleWidgets: false });
+	}
+
+	add(type) {
+		return () => this.setState(({ config }) => {
+			const { widgets } = config;
+			return Object.assign(config, Object.assign(widgets, generateBaseConfig(type)));
+		});
 	}
 
 	render() {
