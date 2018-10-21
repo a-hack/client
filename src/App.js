@@ -12,7 +12,8 @@ export default () => (
 	<BrowserRouter>
 		<Switch>
 			<Route exact path="/" component={HomepageLayout} />
-			<Route path="/dash" component={Dashboard} />
+			<Route path="/dash/:hash/edit" component={Dashboard} />
+			<Route path="/dash/:hash" component={Dashboard} />
 			<Route component={NotFound} />
 		</Switch>
 	</BrowserRouter>
