@@ -26,7 +26,7 @@ export default class Line2 extends Component {
 		}
 
 		if (props.config.hasOwnProperty("fields")) {
-			fields = props.fields;
+			fields = props.fields ? props.fields : this.defaultFields();
 		} else {
 			fields = this.defaultFields();
 		}
@@ -38,7 +38,7 @@ export default class Line2 extends Component {
 			yaxis: config.yaxis,
 			size: "",
 			colour: "",
-			fields,
+			fields: fields,
 		};
 	}
 
@@ -56,9 +56,7 @@ export default class Line2 extends Component {
 		console.log(m);
 		
 		let tmpState = this.state;
-		
 		tmpState[name] = m.name;
-		
 		this.props.updateConfig(tmpState);
 		
 		this.renderGraph(m);
