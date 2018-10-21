@@ -1,12 +1,16 @@
 import Template from "./Template";
-import Scatter from "./Scatter";
-import Line from "./Line";
+import AppTemplate from "./AppTemplate";
 
 export default {
 	Template: {
 		name: "Template",
 		img: "template.jpeg",
 		component: Template,
+	},
+	AppTemplate: {
+		name: "AppTemplate",
+		img: "template.jpeg",
+		component: AppTemplate,
 	},
 	// Scatter: {
 	// 	name: "Scatter",
