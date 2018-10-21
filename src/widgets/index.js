@@ -2,7 +2,10 @@ import Template from "./Template";
 import CountryTable from "./CountryTable";
 import AppTemplate from "./AppTemplate";
 import Bar from "./Bar";
-import WorldMap from "./WorldMap"
+import WorldMap from "./WorldMap";
+import mapPicture from "../pictures/map.png";
+import piPicture from "../pictures/pi.png";
+import tablePicture from "../pictures/table.png";
 
 export default {
 	Template: {
@@ -12,17 +15,17 @@ export default {
 	},
 	AppTemplate: {
 		name: "AppTemplate",
-		img: "template.jpeg",
+		img: piPicture,
 		component: AppTemplate,
 	},
 	CountryTable: {
 		name: "CountryTable",
-		img: "template.jpeg",
+		img: tablePicture,
 		component: CountryTable,
 	},
 	WorldMap: {
 		name: "WorldMap",
-		img: "template.jpeg",
+		img: mapPicture,
 		component: WorldMap,
 	},
 	Bar: {
