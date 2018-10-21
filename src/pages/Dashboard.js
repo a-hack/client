@@ -18,8 +18,8 @@ function generateBaseConfig(type) {
 		[i]: {
 			location: {
 				i,
-				x: 0,
-				y: 0,
+				x: Infinity,
+				y: Infinity,
 				w: 3,
 				h: 2,
 			},
