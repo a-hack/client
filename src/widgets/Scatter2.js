@@ -135,7 +135,7 @@ export default class Scatter2 extends Component {
 				<span>
 					<div
 						id="test"
-						style={ {height: "80%" }}
+						style={ {height: "70%" }}
 						ref={(ref) => {
 							this.ref = ref;
 						}}

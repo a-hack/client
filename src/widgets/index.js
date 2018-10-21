@@ -13,8 +13,12 @@ import Vertical from "./Vertical";
 
 import barPicture from "../pictures/bar.png";
 import linePicture from "../pictures/line.png";
+import scatterPicture from "../pictures/scatter.png";
 import textPicture from "../pictures/text.png";
 import gaugePicture from "../pictures/gauge.png";
+import targetPicture from "../pictures/target.png";
+import commitmentPicture from "../pictures/commitment.png";
+import verticalPicture from "../pictures/vertical.png";
 
 import Header from "./Header";
 import Line2 from "./Line2";
@@ -50,19 +54,9 @@ export default {
 	},
 	Vertical: {
 		name: "Vertical",
-		img: "template.jpeg",
+		img: verticalPicture,
 		component: Vertical,
 	},
-	// Scatter: {
-	// 	name: "Scatter",
-	// 	img: "scatter.jpeg",
-	// 	component: Scatter,
-	// },
-	// Line: {
-	// 	name: "line",
-	// 	img: "line.jpeg",
-	// 	component: Line,
-	// },
 	Line2: {
 		name: "Line2",
 		img: linePicture,
@@ -70,7 +64,7 @@ export default {
 	},
 	Scatter2: {
 		name: "Scatter2",
-		img: "line.jpeg",
+		img: scatterPicture,
 		component: Scatter2,
 	},
 	Header: {
@@ -80,12 +74,12 @@ export default {
 	},
 	Commitment: {
 		name: "Commitment",
-		img: "Commit.jpeg",
+		img: commitmentPicture,
 		component: Commitment,
 	},
 	Target: {
 		name: "Target",
-		img: "Target.jpeg",
+		img: targetPicture,
 		component: Target,
 	},
 	Gauge: {
