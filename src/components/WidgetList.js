@@ -1,39 +1,34 @@
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 import {Button, Header, Icon, Image, Menu, Segment, Sidebar} from "semantic-ui-react";
-import WidgetList from "../widgets/index";
+import WidgetListItems from "../widgets/index";
 import "semantic-ui-css/semantic.min.css";
 
+const Item = ({name, img}) => (
+	<Menu.Item as="button">
+		<Image src={img} size="small" name={name}/>
+		{name}
+	</Menu.Item>
+);
+Item.propTypes = {
+	name: PropTypes.string.isRequired,
+	img: PropTypes.string.isRequired,
+};
 
-class SideMenu extends Component {
+class WidgetList extends Component {
 	constructor(props) {
 		super(props);
-		console.log(WidgetList);
 	}
 
 	render() {
 		return (
-			<Sidebar.Pushable as={Segment}>
-				<Sidebar
-					{...this.props}
-				>
-					<Menu.Item as="a">
-						<Icon name="home" />
-						Home
-					</Menu.Item>
-					<Menu.Item as="a">
-						<Icon name="gamepad" />
-						Games
-					</Menu.Item>
-					<Menu.Item as="a">
-						<Icon name="camera" />
-						Channels
-					</Menu.Item>
-				</Sidebar>
-				<Sidebar.Pusher>
-					{this.props.children}
-				</Sidebar.Pusher>
-			</Sidebar.Pushable>
+			<Sidebar
+				{...this.props}
+			>
+				{Object.values(WidgetListItems).map((item) => <Item key={item.name} name={item.name} img={item.img}/>)}
+			</Sidebar>
 		);
 	}
 }
-export default SideMenu;
+
+export default WidgetList;
