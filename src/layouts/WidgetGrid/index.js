@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { WidthProvider, Responsive } from "react-grid-layout";
+import { Responsive, WidthProvider } from "react-grid-layout";
 
 import "./index.css";
 
@@ -100,7 +100,7 @@ export default class WidgetGrid extends Component {
 				onBreakpointChange={this.onBreakpointChange}
 				{...this.props}
 			>
-				{ Object.values(widgets).map(this.widgetToGridItem) }
+				{Object.values(widgets).map(this.widgetToGridItem)}
 			</ResponsiveReactGridLayout>
 		);
 	}

@@ -1,16 +1,10 @@
-import React, {Component} from "react";
-import {
-	Button,
-	Container,
-	Icon,
-	Menu,
-} from "semantic-ui-react";
+import React, { Component } from "react";
+import { Button, Container, Icon, Menu, } from "semantic-ui-react";
 import QlikConnection from "../utils/QlikConnection";
 import QlikRequire from "../utils/QlikRequire";
 import ResponsiveContainer from "../layouts/Container";
 import SideMenu from "../components/SideMenu";
 import WidgetGrid from "../layouts/WidgetGrid";
-import WidgetList from "../components/WidgetList"
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -26,6 +20,17 @@ const config = {
 			},
 			config: {},
 			type: "Template",
+		},
+		b: {
+			location: {
+				i: "b",
+				x: 0,
+				y: 0,
+				w: 4,
+				h: 4,
+			},
+			config: {},
+			type: "CountryTable",
 		},
 		a: {
 			location: {
@@ -96,19 +101,19 @@ class Dashboard extends Component {
 	}
 
 	handleWidgetShowHide() {
-		this.setState(({visibleWidgets}) => ({visibleWidgets: !visibleWidgets}));
+		this.setState(({ visibleWidgets }) => ({ visibleWidgets: !visibleWidgets }));
 	}
 
 	handleShowHide() {
-		this.setState(({visible}) => ({visible: !visible}));
+		this.setState(({ visible }) => ({ visible: !visible }));
 	}
 
 	handleSidebarHide() {
-		this.setState({visible: false});
+		this.setState({ visible: false });
 	}
 
-	handleWidgetbarHide(){
-		this.setState({visibleWidgets: false});
+	handleWidgetbarHide() {
+		this.setState({ visibleWidgets: false });
 	}
 
 	render() {

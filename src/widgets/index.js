@@ -1,4 +1,5 @@
 import Template from "./Template";
+import CountryTable from "./CountryTable";
 import AppTemplate from "./AppTemplate";
 
 export default {
@@ -11,6 +12,11 @@ export default {
 		name: "AppTemplate",
 		img: "template.jpeg",
 		component: AppTemplate,
+	},
+	CountryTable: {
+		name: "CountryTable",
+		img: "template.jpeg",
+		component: CountryTable,
 	},
 	// Scatter: {
 	// 	name: "Scatter",

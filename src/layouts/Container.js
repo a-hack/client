@@ -102,7 +102,7 @@ class DesktopContainer extends Component {
 				</Visibility>
 
 				{children}
-				{ footer && (
+				{footer && (
 					<Segment inverted vertical style={{ padding: "4em 0em" }}>
 						<Container>
 							<Grid divided inverted stackable>
@@ -130,7 +130,8 @@ class DesktopContainer extends Component {
 											Footer Header
 										</Header>
 										<p>
-											Extra space for a call to action inside the footer that could help re-engage users.
+											Extra space for a call to action inside the footer that could help re-engage
+											users.
 										</p>
 									</Grid.Column>
 								</Grid.Row>
@@ -138,7 +139,7 @@ class DesktopContainer extends Component {
 						</Container>
 					</Segment>
 				)
-			}
+				}
 			</Responsive>
 		);
 	}
@@ -188,12 +189,12 @@ class MobileContainer extends Component {
 						<Menu.Item as="a" active>
 							Home
 						</Menu.Item>
-					{
-						homeBanner &&
-						<Button as={Link} to="/dash/new/edit">
-							New
-						</Button>
-					}
+						{
+							homeBanner &&
+							<Button as={Link} to="/dash/new/edit">
+								New
+							</Button>
+						}
 
 					</Sidebar>
 
@@ -206,7 +207,7 @@ class MobileContainer extends Component {
 							inverted
 							textAlign="center"
 							style={{
-								minHeight:  isHome ? "350" : "50",
+								minHeight: isHome ? "350" : "50",
 								padding: "1em 0em",
 								backgroundImage: homeBanner
 									? "url(https://source.unsplash.com/collection/3390539/1600x900)"
@@ -237,7 +238,7 @@ class MobileContainer extends Component {
 						{children}
 					</Sidebar.Pusher>
 				</Sidebar.Pushable>
-				{ footer && (
+				{footer && (
 					<Segment inverted vertical style={{ padding: "4em 0em" }}>
 						<Container>
 							<Grid divided inverted stackable>
@@ -265,7 +266,8 @@ class MobileContainer extends Component {
 											Footer Header
 										</Header>
 										<p>
-											Extra space for a call to action inside the footer that could help re-engage users.
+											Extra space for a call to action inside the footer that could help re-engage
+											users.
 										</p>
 									</Grid.Column>
 								</Grid.Row>

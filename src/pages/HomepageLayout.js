@@ -1,14 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-	Button,
-	Container,
-	Grid,
-	Header,
-	Icon,
-	Segment,
-} from "semantic-ui-react";
+import { Button, Container, Grid, Header, Icon, Segment } from "semantic-ui-react";
 import ResponsiveContainer from "../layouts/Container";
 import "semantic-ui-css/semantic.min.css";
 
@@ -68,7 +61,8 @@ const HomepageLayout = () => (
 						fontWeight: "500",
 					}}
 				>
-					Better analyze, understand and visualize how we can conserve and sustainably use the oceans, seas and marine resources
+					Better analyze, understand and visualize how we can conserve and sustainably use the oceans, seas
+					and marine resources
 				</Header>
 				<Grid columns="three">
 					<Grid.Row>
@@ -114,13 +108,13 @@ const HomepageLayout = () => (
 				<Grid.Row textAlign="center">
 					<Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
 						<Header as="h3" style={{ fontSize: "2em" }}>
-							"Brace yourself"
+							{"\"Brace yourself\""}
 						</Header>
 						<p style={{ fontSize: "1.33em" }}>Enrich your knowledge with up-to-date climate data</p>
 					</Grid.Column>
 					<Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
 						<Header as="h3" style={{ fontSize: "2em" }}>
-							"Unleash your intelligence."
+							{"\"Unleash your intelligence.\""}
 						</Header>
 						<p style={{ fontSize: "1.33em" }}>
 							Smart and targeted climate data at your click

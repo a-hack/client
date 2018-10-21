@@ -7,64 +7,69 @@ export default class Scatter extends Component {
 
 	constructor(props) {
 		super(props);
-		
-		var config = this.getConfig(), fields;
-		
-		if (props.hasOwnProperty('config')) {
-			if (props.config.hasOwnProperty('xaxis')) {
+
+		const config = this.getConfig();
+		let fields;
+
+		if (props.hasOwnProperty("config")) {
+			if (props.config.hasOwnProperty("xaxis")) {
 				config.xaxis = props.config.xaxis;
 			}
-			if (props.config.hasOwnProperty('yaxis')) {
+			if (props.config.hasOwnProperty("yaxis")) {
 				config.yaxis = props.config.yaxis;
 			}
-			if (props.config.hasOwnProperty('size')) {
+			if (props.config.hasOwnProperty("size")) {
 				config.size = props.config.size;
 			}
-			if (props.config.hasOwnProperty('colour')) {
+			if (props.config.hasOwnProperty("colour")) {
 				config.colour = props.config.colour;
 			}
 		}
-		
-		if (props.config.hasOwnProperty('fields')) {
+
+		if (props.config.hasOwnProperty("fields")) {
 			fields = props.fields;
 		} else {
 			fields = this.defaultFields();
 		}
-		
-		this.state = {xaxis:'',
-					  yaxis:'',
-					  size:'',
-					  colour:'',
-					  fields:fields};
+
+		this.state = {
+			xaxis: "",
+			yaxis: "",
+			size: "",
+			colour: "",
+			fields,
+		};
 	}
-	
+
 	getConfig() {
-		return {xaxis:'',yaxis:'',size:'',colour:''}
+		return {
+			xaxis: "", yaxis: "", size: "", colour: "",
+		};
 	}
-	
+
 	handleChange(name, event) {
-		var m = {};
+		let m = {};
 		m[name] = event.target.value;
 		this.setState(m);
 	}
 
-	defaultFields () {
-		return ["Country", "Ocean Basins", "Partners", "Commitments","Goals","Targets"];
+	defaultFields() {
+		return ["Country", "Ocean Basins", "Partners", "Commitments", "Goals", "Targets"];
 	}
-	
+
 	componentDidMount() {
 		// this.q.getBox((data) => {
 		this.renderGraph.call(this);
 		// });
 	}
-	
+
 	renderGraph() {
-				const { q } = this.props;
+		const { q, fields } = this.props;
 
 		this.create([{
 			type: "matrix",
 			data: [
-				this.state.fields,
+				fields,
 			],
 		}]);
 		// this.q.getBox((data) => {
@@ -137,7 +142,7 @@ export default class Scatter extends Component {
 				this.update(newData);
 			});
 		});
-		
+
 	}
 
 	update(data) {
@@ -145,11 +150,6 @@ export default class Scatter extends Component {
 	}
 
 	create(data) {
-		var hasSize, hasColour, hasX, hasY,
-			xaxisCol,yaxisCol,colourCol,sizeCol;
-		
-		const target = document.createElement("div");
-		document.getElementById("test").appendChild(target);
 		const pic = picasso({
 			style: {
 				"$font-size": "12px",
@@ -157,25 +157,25 @@ export default class Scatter extends Component {
 				"$font-family": "Source Sans Pro",
 			},
 		});
-		
-		const colNames = this.state.fields;//data[0] ? data[0] : [];
-		
-		hasSize = colNames.includes(this.state.size);
-		hasColour = colNames.includes(this.state.colour);
-		hasX = colNames.includes(this.state.xaxis);
-		hasY = colNames.includes(this.state.yaxis);
-		
-		xaxisCol = hasX ? this.state.xaxis : colNames[0];
-		yaxisCol = hasY ? this.state.yaxis : colNames[0];
-		colourCol = hasColour ? this.state.colour : "";
-		sizeCol = hasSize ? this.state.size : "";
+
+		const colNames = this.state.fields;	// data[0] ? data[0] : [];
+
+		const hasSize = colNames.includes(this.state.size);
+		const hasColour = colNames.includes(this.state.colour);
+		const hasX = colNames.includes(this.state.xaxis);
+		const hasY = colNames.includes(this.state.yaxis);
+
+		const xaxisCol = hasX ? this.state.xaxis : colNames[0];
+		const yaxisCol = hasY ? this.state.yaxis : colNames[0];
+		const colourCol = hasColour ? this.state.colour : "";
+		const sizeCol = hasSize ? this.state.size : "";
 		this.setState({
-			xaxis:xaxisCol,
-			yaxis:yaxisCol,
-			colour:colourCol,
-			size:sizeCol 
+			xaxis: xaxisCol,
+			yaxis: yaxisCol,
+			colour: colourCol,
+			size: sizeCol,
 		});
-		
+
 		this.chart = pic.chart({
 			element: this.reference,
 			data,
@@ -184,23 +184,23 @@ export default class Scatter extends Component {
 					x: {
 						data: {
 							field: xaxisCol,
-						}
+						},
 					},
 					y: {
 						data: {
 							field: yaxisCol,
 						},
-						invert : true
+						invert: true,
 					},
 					col: {
-						data: { extract: { field: hasColour ? this.state.colour : colNames[0]}},
+						data: { extract: { field: hasColour ? this.state.colour : colNames[0] } },
 						type: "color",
 					},
 					size: {
 						data: {
 							field: this.state.size,
-						}
-					}
+						},
+					},
 				},
 				components: [{
 					key: "y-axis",
@@ -221,20 +221,20 @@ export default class Scatter extends Component {
 							props: {
 								y: { field: yaxisCol },
 								x: { field: xaxisCol },
-								fill : {field: hasColour ? colourCol : colNames[0]},
-								size : {field: hasSize ? sizeCol : colNames[0]}
+								fill: { field: hasColour ? colourCol : colNames[0] },
+								size: { field: hasSize ? sizeCol : colNames[0] }
 							},
 						},
 					},
 					settings: {
-						x: { scale: 'x' },
-						y: { scale: 'y' },
+						x: { scale: "x" },
+						y: { scale: "y" },
 						shape: "circle",
-						size : hasSize ? {scale : 'size'} : 1,
-						fill : hasColour ? {scale : 'col'} : "#0000FF",
+						size: hasSize ? { scale: "size" } : 1,
+						fill: hasColour ? { scale: "col" } : "#0000FF",
 					},
 				}],
-			}, 
+			},
 			created() {
 				console.log("Chart was created");
 			},
@@ -248,46 +248,57 @@ export default class Scatter extends Component {
 	render() {
 		const { data } = this.state;
 		return (
-			<div style={{ border:"50px", margin:"50px", width:"400px", height: "300px" }}>
+			<div style={{
+				border: "50px", margin: "50px", width: "400px", height: "300px",
+			}}
+			>
 				<span>
 					<div
 						id="test"
-						style={{ position:"relative", width:"80%", height: "80%" }}
+						style={{ position: "relative", width: "80%", height: "80%" }}
 						ref={(reference) => {
 							this.reference = reference;
 						}}
 					/>
 				</span>
 				<span>
-				<div> 
-					X-Axis: 
-					<select value={this.state.xaxis} 
-						onChange={this.handleChange.bind(this,"xaxis")}>
-						{this.state.fields.map((val) => <option key={val} value={val}>{val}</option>)}
-					</select>
-				</div>
-				<div> 
-					Y-Axis: 
-					<select value={this.state.yaxis} 
-						onChange={this.handleChange.bind(this,"yaxis")}>
-						{this.state.fields.map((val) => <option key={val} value={val}>{val}</option>)}
-					</select>
-				</div>
-				<div> 
-					Size: 
-					<select value={this.state.size} 
-						onChange={this.handleChange.bind(this,"size")}>
-						{[""].concat(this.state.fields).map((val) => <option key={val} value={val}>{val}</option>)}
-					</select>
-				</div>
-				<div> 
-					Colour: 
-					<select value={this.state.colour} 
-						onChange={this.handleChange.bind(this,"colour")}>
-						{[""].concat(this.state.fields).map((val) => <option key={val} value={val}>{val}</option>)}
-					</select>
-				</div>
-				<input type="button" value="Clickme" onClick={this.renderGraph.bind(this)}></input>
+					<div>
+						X-Axis:
+						<select
+							value={this.state.xaxis}
+							onChange={this.handleChange.bind(this, "xaxis")}
+						>
+							{this.state.fields.map((val) => <option key={val} value={val}>{val}</option>)}
+						</select>
+					</div>
+					<div>
+						Y-Axis:
+						<select
+							value={this.state.yaxis}
+							onChange={this.handleChange.bind(this, "yaxis")}
+						>
+							{this.state.fields.map((val) => <option key={val} value={val}>{val}</option>)}
+						</select>
+					</div>
+					<div>
+						Size:
+						<select
+							value={this.state.size}
+							onChange={this.handleChange.bind(this, "size")}
+						>
+							{[""].concat(this.state.fields).map((val) => <option key={val} value={val}>{val}</option>)}
+						</select>
+					</div>
+					<div>
+						Colour:
+						<select
+							value={this.state.colour}
+							onChange={this.handleChange.bind(this, "colour")}
+						>
+							{[""].concat(this.state.fields).map((val) => <option key={val} value={val}>{val}</option>)}
+						</select>
+					</div>
+					<input type="button" value="Clickme" onClick={this.renderGraph.bind(this)}></input>
 				</span>
 			</div>
 		);
