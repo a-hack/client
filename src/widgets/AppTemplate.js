@@ -10,25 +10,27 @@ export default class Template extends Component {
 	}
 
 	componentDidMount() {
-		console.log("teste", this.props.app);
+		const { app } = this.props;
 
-		this.props.app.visualization.create('piechart',
+		app.visualization.create("piechart",
 			[{
 				qDef: { qFieldDefs: ["=[Country]"], qFieldLabels: ["Country"] },
 				qNullSuppression: true,
 				qOtherTotalSpec: { qOtherMode: "OTHER_COUNTED", qOtherCounted: "10" },
 			}, "=Count(Distinct [Partners])"],
-			{}
-		).then((viz) => {
-			viz.show(this.ref);
-		});
+			{})
+			.then((viz) => {
+				viz.show(this.ref);
+			});
 	}
 
 	render() {
 		return (
 			<div
 				style={{ height: "100%" }}
-				ref={ref => this.ref = ref}
+				ref={ref => {
+					this.ref = ref;
+				}}
 			/>
 		);
 	}
