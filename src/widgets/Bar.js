@@ -12,7 +12,7 @@ export default class Template extends Component {
 	componentDidMount() {
 		const { app } = this.props;
 
-		app.visualization.create("piechart",
+		app.visualization.create("barchart", // viz type
 			[{
 				qDef: {
 					qFieldDefs: ["=[Country]"],
@@ -21,7 +21,9 @@ export default class Template extends Component {
 				qNullSuppression: true,
 				qOtherTotalSpec: { qOtherMode: "OTHER_COUNTED", qOtherCounted: "10" },
 			}, "=Count(Distinct [Partners])"],
-			{})
+			{
+				orientation: "horizontal",
+			})
 			.then((viz) => {
 				viz.show(this.ref);
 			});

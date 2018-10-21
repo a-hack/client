@@ -24,6 +24,17 @@ const config = {
 			config: {},
 			type: "WorldMap",
 		},
+		x: {
+			location: {
+				i: "x",
+				x: 0,
+				y: 0,
+				w: 4,
+				h: 4,
+			},
+			config: {},
+			type: "Bar",
+		},
 		b: {
 			location: {
 				i: "b",
