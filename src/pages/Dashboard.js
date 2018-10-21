@@ -146,7 +146,7 @@ class Dashboard extends Component {
 	}
 
 	updateLayout(newLayouts) {
-		this.setState(({ widgets }) => {
+		this.setState(({ config: { widgets } }) => {
 			const newWidgets = Object.assign({}, widgets);
 			newLayouts.forEach((layout) => {
 				const { i } = layout;
