@@ -2,7 +2,11 @@ import Template from "./Template";
 import CountryTable from "./CountryTable";
 import AppTemplate from "./AppTemplate";
 import Bar from "./Bar";
-import WorldMap from "./WorldMap"
+import WorldMap from "./WorldMap";
+import Scatter from "./Scatter";
+import Line from "./Line";
+
+import Line2 from "./Line2";
 
 export default {
 	Template: {
@@ -35,9 +39,9 @@ export default {
 	// 	img: "scatter.jpeg",
 	// 	component: Scatter,
 	// },
-	// Line: {
-	// 	name: "line",
-	// 	img: "line.jpeg",
-	// 	component: Line,
-	// },
+	Line2: {
+		name: "line",
+		img: "line.jpeg",
+		component: Line2,
+	},
 };
