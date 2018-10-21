@@ -51,7 +51,6 @@ class BasicMap extends Component {
 			}, {});
 			this.setState({ data, dataMap });
 		});
-
 	}
 
 	handleClick(data) {

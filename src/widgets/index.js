@@ -3,9 +3,12 @@ import CountryTable from "./CountryTable";
 import AppTemplate from "./AppTemplate";
 import Bar from "./Bar";
 import WorldMap from "./WorldMap";
-import Scatter from "./Scatter";
-import Line from "./Line";
 
+import mapPicture from "../pictures/map.png";
+import piPicture from "../pictures/pi.png";
+import tablePicture from "../pictures/table.png";
+
+import Scatter2 from "./Scatter2";
 import Line2 from "./Line2";
 
 export default {
@@ -16,17 +19,17 @@ export default {
 	},
 	AppTemplate: {
 		name: "AppTemplate",
-		img: "template.jpeg",
+		img: piPicture,
 		component: AppTemplate,
 	},
 	CountryTable: {
 		name: "CountryTable",
-		img: "template.jpeg",
+		img: tablePicture,
 		component: CountryTable,
 	},
 	WorldMap: {
 		name: "WorldMap",
-		img: "template.jpeg",
+		img: mapPicture,
 		component: WorldMap,
 	},
 	Bar: {
@@ -34,13 +37,13 @@ export default {
 		img: "template.jpeg",
 		component: Bar,
 	},
-	// Scatter: {
-	// 	name: "Scatter",
-	// 	img: "scatter.jpeg",
-	// 	component: Scatter,
-	// },
+	Scatter2: {
+		name: "Scatter2",
+		img: "scatter.jpeg",
+		component: Scatter2,
+	},
 	Line2: {
-		name: "line",
+		name: "Line2",
 		img: "line.jpeg",
 		component: Line2,
 	},
