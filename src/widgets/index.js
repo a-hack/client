@@ -9,8 +9,9 @@ import piPicture from "../pictures/pi.png";
 import tablePicture from "../pictures/table.png";
 import Header from "./Header";
 
-import Scatter2 from "./Scatter2";
 import Line2 from "./Line2";
+import Commitment from "./Commitment";
+import Target from "./Target";
 
 export default {
 	Template: {
@@ -48,4 +49,14 @@ export default {
 		img: "template.jpeg",
 		component: Header,
 	},
+	Commitment: {
+		name:"Commitment",
+		img:"Commit.jpeg",
+		component:Commitment,
+	},
+	Target: {
+		name:"Target",
+		img:"Target.jpeg",
+		component:Target,
+	}
 };
