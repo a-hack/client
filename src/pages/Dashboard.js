@@ -20,7 +20,7 @@ function generateBaseConfig(type) {
 				i,
 				x: 0,
 				y: 0,
-				w: 2,
+				w: 3,
 				h: 2,
 			},
 			config: {},
@@ -49,6 +49,7 @@ class Dashboard extends Component {
 		this.handleWidgetShowHide = this.handleWidgetShowHide.bind(this);
 		this.add = this.add.bind(this);
 		this.save = this.save.bind(this);
+		this.remove = this.remove.bind(this);
 		this.updateLayout = this.updateLayout.bind(this);
 		this.updateWidgetConfig = this.updateWidgetConfig.bind(this);
 
@@ -85,14 +86,14 @@ class Dashboard extends Component {
 	}
 
 	updateLayout(newLayouts) {
-		this.setState(({ config: { widgets } }) => {
-			const newWidgets = Object.assign({}, widgets);
-			newLayouts.forEach((layout) => {
-				const { i } = layout;
-				const { location } = newWidgets[i];
-				newWidgets[i].location = Object.assign(location, layout);
-			});
+		const { widgets } = this.state.config;
+		const newWidgets = Object.assign({}, widgets);
+		newLayouts.forEach((layout) => {
+			const { i } = layout;
+			const { location } = newWidgets[i];
+			newWidgets[i].location = Object.assign(location, layout);
 		});
+		this.setState({ config: { widgets: newWidgets } });
 	}
 
 	updateWidgetConfig(i) {
@@ -117,6 +118,18 @@ class Dashboard extends Component {
 		});
 	}
 
+	remove(id) {
+		return () => this.setState(({ config }) => {
+			console.log("REMOVING");
+			console.log(config);
+			const widgets = Object.assign({}, config.widgets);
+			delete widgets[id];
+			const newConfig = Object.assign({}, config, { widgets });
+			console.log(newConfig);
+			return { config: newConfig };
+		});
+	}
+
 	async save() {
 		const { id } = await save(this.state.config);
 		this.setState({
@@ -127,6 +140,7 @@ class Dashboard extends Component {
 	render() {
 		window.history.pushState({}, document.title, `/dash/${this.state.hash}`);
 
+		console.log("STAAAATE", this.state);
 		const {
 			app, q, visible, visibleWidgets, error, config,
 		} = this.state;
@@ -200,6 +214,7 @@ class Dashboard extends Component {
 								app={app}
 								config={config}
 								error={error}
+								removeWidget={this.remove}
 								updateLayout={this.updateLayout}
 								updateWidgetConfig={this.updateWidgetConfig}
 							/>

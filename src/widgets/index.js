@@ -20,6 +20,7 @@ import Header from "./Header";
 import Line2 from "./Line2";
 import Commitment from "./Commitment";
 import Target from "./Target";
+import Scatter2 from "./Scatter2";
 
 export default {
 	Template: {
@@ -66,6 +67,11 @@ export default {
 		name: "Line2",
 		img: linePicture,
 		component: Line2,
+	},
+	Scatter2: {
+		name: "Scatter2",
+		img: "line.jpeg",
+		component: Scatter2,
 	},
 	Header: {
 		name: "Header",
