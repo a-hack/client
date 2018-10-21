@@ -69,7 +69,7 @@ export default class WidgetGrid extends Component {
 
 	widgetToGridItem({ location, config, type }) {
 		const Widget = widgets[type].component;
-		const { q, save } = this.props;
+		const { q, save, app } = this.props;
 
 		const { i } = location;
 
@@ -82,6 +82,7 @@ export default class WidgetGrid extends Component {
 				<Widget
 					style={{ maxHeight: "100%" }}
 					key={i}
+					app={app}
 					config={config}
 					q={q}
 					save={save}
