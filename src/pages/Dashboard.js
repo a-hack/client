@@ -111,6 +111,7 @@ class Dashboard extends Component {
 		this.handleWidgetShowHide = this.handleWidgetShowHide.bind(this);
 		this.add = this.add.bind(this);
 		this.save = this.save.bind(this);
+		this.updateLayout = this.updateLayout.bind(this);
 
 		this.con = new QlikConnection();
 		this.conApi = new QlikRequire();
@@ -142,6 +143,17 @@ class Dashboard extends Component {
 
 	handleWidgetbarHide() {
 		this.setState({ visibleWidgets: false });
+	}
+
+	updateLayout(newLayouts) {
+		this.setState(({ widgets }) => {
+			const newWidgets = Object.assign({}, widgets);
+			newLayouts.forEach((layout) => {
+				const { i } = layout;
+				const { location } = newWidgets[i];
+				newWidgets[i].location = Object.assign(location, layout);
+			});
+		});
 	}
 
 	add(type) {
@@ -238,6 +250,7 @@ class Dashboard extends Component {
 								app={app}
 								config={config}
 								error={error}
+								updateLayout={this.updateLayout}
 							/>
 						</Container>
 					</SideMenu>
