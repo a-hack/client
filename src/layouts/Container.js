@@ -147,7 +147,7 @@ class DesktopContainer extends Component {
 
 DesktopContainer.propTypes = {
 	children: PropTypes.node.isRequired,
-	homeBanner: PropTypes.element,
+	homeBanner: PropTypes.oneOfType([PropTypes.element, PropTypes.bool]).isRequired,
 	footer: PropTypes.bool.isRequired,
 };
 
@@ -193,7 +193,7 @@ class MobileContainer extends Component {
 							homeBanner
 							&& (
 								<Button as={Link} to="/dash/new/edit">
-								New
+									New
 								</Button>
 							)
 						}
@@ -288,7 +288,7 @@ MobileContainer.defaultProps = {
 
 MobileContainer.propTypes = {
 	children: PropTypes.node.isRequired,
-	homeBanner: PropTypes.element.isRequired,
+	homeBanner: PropTypes.oneOfType([PropTypes.element, PropTypes.bool]).isRequired,
 	footer: PropTypes.bool.isRequired,
 	isHome: PropTypes.bool,
 };
@@ -312,12 +312,13 @@ const ResponsiveContainer = ({ children, banner, footer }) => (
 
 ResponsiveContainer.propTypes = {
 	children: PropTypes.node.isRequired,
-	banner: PropTypes.element.isRequired,
+	banner: PropTypes.oneOfType([PropTypes.element, PropTypes.bool]),
 	footer: PropTypes.bool,
 };
 
 ResponsiveContainer.defaultProps = {
 	footer: false,
+	banner: false,
 };
 
 export default ResponsiveContainer;
