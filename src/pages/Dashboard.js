@@ -87,6 +87,7 @@ class Dashboard extends Component {
 		const {  match: { params: { hash } } } = props;
 
 		this.state = {
+			error: undefined,
 			config: undefined,
 			hash,
 			visible: false,
@@ -110,7 +111,9 @@ class Dashboard extends Component {
 		this.conApi.getApp().then((app) => {
 			this.setState({ app });
 		});
-		get(this.state.hash).then((config) => this.setState({ config }));
+		get(this.state.hash)
+			.then((config) => this.setState({ config }))
+			.catch((error) => this.setState({ error }));
 	}
 
 	handleWidgetShowHide() {
@@ -138,7 +141,7 @@ class Dashboard extends Component {
 
 	render() {
 		const {
-			app, q, visible, visibleWidgets,
+			app, q, visible, visibleWidgets, error,
 		} = this.state;
 		if (app && q) {
 			return (
@@ -192,6 +195,7 @@ class Dashboard extends Component {
 								save={() => {
 								}}
 								config={config}
+								error={error}
 							/>
 						</Container>
 					</SideMenu>

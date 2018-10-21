@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Responsive, WidthProvider } from "react-grid-layout";
+import { Message } from "semantic-ui-react";
 
 import "./index.css";
 
@@ -93,6 +94,17 @@ export default class WidgetGrid extends Component {
 	}
 
 	render() {
+		if (this.props.error) {
+			return (
+				<Message negative size="massive">
+					<Message.Header>
+						Something went wrong
+					</Message.Header>
+					{ this.props.error.toString() }
+				</Message>
+			);
+		}
+
 		const { config: { widgets } } = this.props;
 		return (
 			<ResponsiveReactGridLayout
