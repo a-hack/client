@@ -183,7 +183,7 @@ export default class Line extends Component {
 		});
 
 		this.chart = pic.chart({
-			element: this.reference,
+			element: this.ref,
 			data,
 			settings: {
 				scales: {
@@ -252,8 +252,8 @@ export default class Line extends Component {
 					<div
 						id="test"
 						style={{ position: "relative", width: "100%", height: "80%" }}
-						ref={(reference) => {
-							this.reference = reference;
+						ref={(ref) => {
+							this.ref = ref;
 						}}
 					/>
 				</span>

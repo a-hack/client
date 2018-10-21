@@ -175,7 +175,7 @@ export default class Scatter extends Component {
 		});
 
 		this.chart = pic.chart({
-			element: this.reference,
+			element: this.ref,
 			data,
 			settings: {
 				scales: {
@@ -254,8 +254,8 @@ export default class Scatter extends Component {
 					<div
 						id="test"
 						style={{ position: "relative", width: "80%", height: "80%" }}
-						ref={(reference) => {
-							this.reference = reference;
+						ref={(ref) => {
+							this.ref = ref;
 						}}
 					/>
 				</span>

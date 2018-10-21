@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { WidgetProps } from "../consts";
 
-export default class Template extends Component {
+export default class Commitment extends Component {
 	static propTypes = WidgetProps;
-
 
 	constructor(props) {
 		super(props);
@@ -16,15 +15,10 @@ export default class Template extends Component {
 		app.visualization.create("table",
 			[{
 				qDef: {
-					qFieldDefs: ["=[Country]"],
-					qFieldLabels: ["Country"],
+					qFieldDefs: ["=[Commitment Title]"],
+					qFieldLabels: ["Commitment Title"],
 				},
 				qNullSuppression: true,
-			}, {
-				qDef: {
-					qDef: "=Count(Distinct [Commitment ID])",
-					qLabel: "Commitments",
-				},
 			}, {
 				qDef: {
 					qDef: "=Count(Distinct [Partners])",
