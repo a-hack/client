@@ -7,6 +7,7 @@ import WorldMap from "./WorldMap";
 import mapPicture from "../pictures/map.png";
 import piPicture from "../pictures/pi.png";
 import tablePicture from "../pictures/table.png";
+import Header from "./Header";
 
 import Scatter2 from "./Scatter2";
 import Line2 from "./Line2";
@@ -37,14 +38,14 @@ export default {
 		img: "template.jpeg",
 		component: Bar,
 	},
-	Scatter2: {
-		name: "Scatter2",
-		img: "scatter.jpeg",
-		component: Scatter2,
-	},
 	Line2: {
 		name: "Line2",
 		img: "line.jpeg",
 		component: Line2,
+	},
+	Header: {
+		name: "Header",
+		img: "template.jpeg",
+		component: Header,
 	},
 };

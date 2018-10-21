@@ -6,6 +6,7 @@
 	right: 0px;
 	bottom: 0px;
 	cursor: se-resize;
+	z-index: 1023891327189;
 }
 
 .react-resizable-handle::after {

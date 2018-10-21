@@ -78,10 +78,20 @@ export default class WidgetGrid extends Component {
 
 		return (
 			<div
-				style={{ border: "1px solid green" }}
+				style={{
+					border: "1px solid rgba(0, 0, 0, 0.2)",
+				}}
 				key={i}
 				data-grid={location}
 			>
+				<div
+					className="awesome-dragging-handle-thing"
+					style={{
+						height: "1rem",
+						borderBottom: "1px solid rgba(0, 0, 0, 0.2)",
+					}}
+				>
+				</div>
 				<Widget
 					style={{ maxHeight: "100%" }}
 					key={i}
@@ -89,6 +99,7 @@ export default class WidgetGrid extends Component {
 					config={config}
 					q={q}
 					save={save}
+					updateConfig={this.props.updateWidgetConfig(i)}
 				/>
 			</div>
 		);
@@ -110,7 +121,8 @@ export default class WidgetGrid extends Component {
 
 		return (
 			<ResponsiveReactGridLayout
-				style={{ border: "1px solid red" }}
+				containerPadding={[10, 10]}
+				draggableHandle=".awesome-dragging-handle-thing"
 				onLayoutChange={this.onLayoutChange}
 				onBreakpointChange={this.onBreakpointChange}
 				{...this.props}
