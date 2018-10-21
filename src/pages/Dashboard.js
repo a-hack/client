@@ -40,6 +40,23 @@ const config = {
 	},
 };
 
+function generateBaseConfig(type) {
+	const i = (Math.random() * 100000000) | 0;
+	return {
+		[i]: {
+			location: {
+				i,
+				x: 0,
+				y: 0,
+				w: 2,
+				h: 2,
+			},
+			config: {},
+			type,
+		},
+	};
+}
+
 class Dashboard extends Component {
 	constructor(props) {
 		super(props);
@@ -81,7 +98,7 @@ class Dashboard extends Component {
 	render() {
 		const {q, visible,visibleWidgets} = this.state;
 		return (
-			<ResponsiveContainer>
+			<ResponsiveContainer footer={false}>
 				<SideMenu
 					as={Menu}
 					animation="uncover"
