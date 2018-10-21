@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import picasso from "picasso.js";
 import { WidgetProps } from "../consts";
 
-export default class Scatter extends Component {
+export default class Line extends Component {
 	static props = WidgetProps;
 
 	constructor(props) {
@@ -49,7 +49,7 @@ export default class Scatter extends Component {
 	}
 
 	defaultFields () {
-		return ["Country", "Ocean Basins", "Partners", "Commitments","Goals","Targets"];
+		return ["Country", "Ocean Basins", "Partners", "Commitments"];
 	}
 	
 	componentDidMount() {
@@ -119,7 +119,7 @@ export default class Scatter extends Component {
 
 		q.createSessionObject(barchartProperties).then(model => {
 			model.getLayout().then(info => {
-
+				
 				const newData = [{
 					type: "matrix",
 					data: [
@@ -175,7 +175,7 @@ export default class Scatter extends Component {
 			colour:colourCol,
 			size:sizeCol 
 		});
-		
+
 		this.chart = pic.chart({
 			element: this.reference,
 			data,
@@ -183,7 +183,7 @@ export default class Scatter extends Component {
 				scales: {
 					x: {
 						data: {
-							field: xaxisCol,
+							extract : {field: xaxisCol}
 						}
 					},
 					y: {
@@ -191,15 +191,6 @@ export default class Scatter extends Component {
 							field: yaxisCol,
 						},
 						invert : true
-					},
-					col: {
-						data: { extract: { field: hasColour ? this.state.colour : colNames[0]}},
-						type: "color",
-					},
-					size: {
-						data: {
-							field: this.state.size,
-						}
 					}
 				},
 				components: [{
@@ -213,26 +204,25 @@ export default class Scatter extends Component {
 					scale: "x",
 					dock: "bottom",
 				}, {
-					key: "p",
-					type: "point",
+					key: "lines",
+					type: "line",
 					data: {
 						extract: {
-							field: "Country",
+							field: xaxisCol,
 							props: {
-								y: { field: yaxisCol },
-								x: { field: xaxisCol },
-								fill : {field: hasColour ? colourCol : colNames[0]},
-								size : {field: hasSize ? sizeCol : colNames[0]}
-							},
-						},
+								v: { field: yaxisCol }
+							}
+						}
 					},
 					settings: {
-						x: { scale: 'x' },
-						y: { scale: 'y' },
-						shape: "circle",
-						size : hasSize ? {scale : 'size'} : 1,
-						fill : hasColour ? {scale : 'col'} : "#0000FF",
+						coordinates : {
+							major: { scale: 'x' },
+							minor: { scale: 'y', ref:'v' }
+						}
 					},
+					layers : {
+						line: {}
+					}
 				}],
 			}, 
 			created() {
@@ -252,7 +242,7 @@ export default class Scatter extends Component {
 				<span>
 					<div
 						id="test"
-						style={{ position:"relative", width:"80%", height: "80%" }}
+						style={{ position:"relative", width:"100%", height: "80%" }}
 						ref={(reference) => {
 							this.reference = reference;
 						}}
