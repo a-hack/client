@@ -5,15 +5,17 @@ class Paragraph extends Component {
 	constructor(props) {
 		super(props);
 		this.onChange = this.onChange.bind(this);
+		this.state = { text: this.props.config.text};
 	}
 
-	onChange(e) {
+	onChange(e){
+		this.setState({text:e.target.value});
 		this.props.updateConfig({ text: e.target.value });
 	}
 
 	render() {
 		return (
-			<TextArea onChange={this.onChange} style={{width: "100%", minHeight: "100%" }} value={this.props.config.text} autoHeight placeholder="text..."/>
+			<TextArea onChange={this.onChange} style={{ width: "100%", minHeight: "calc(100% - 1rem)" }} value={this.state.text} autoHeight placeholder="text..."/>
 		);
 	}
 }

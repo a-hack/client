@@ -97,7 +97,6 @@ class Dashboard extends Component {
 
 	updateWidgetConfig(i) {
 		return (newConfig) => {
-			console.log(newConfig);
 			this.setState(({ config: { widgets } }) => {
 				const newWidgets = Object.assign({}, widgets);
 				const { config } = newWidgets[i];
