@@ -3,6 +3,7 @@ import CountryTable from "./CountryTable";
 import AppTemplate from "./AppTemplate";
 import Bar from "./Bar";
 import WorldMap from "./WorldMap";
+import Gauge from "./Gauge";
 
 import mapPicture from "../pictures/map.png";
 import piPicture from "../pictures/pi.png";
@@ -58,5 +59,10 @@ export default {
 		name:"Target",
 		img:"Target.jpeg",
 		component:Target,
-	}
+	},
+	Gauge: {
+		name: "Gauge",
+		img: "template.jpeg",
+		component: Gauge,
+	},
 };

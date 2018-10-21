@@ -4,6 +4,7 @@ import { WidgetProps } from "../consts";
 export default class Template extends Component {
 	static propTypes = WidgetProps;
 
+
 	constructor(props) {
 		super(props);
 		this.state = {};
