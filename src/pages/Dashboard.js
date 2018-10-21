@@ -144,6 +144,7 @@ class Dashboard extends Component {
 						vertical
 						visible={visible}
 						add={this.add}
+						app={app}
 						visible2={visibleWidgets}
 						width="thin"
 						style={{
