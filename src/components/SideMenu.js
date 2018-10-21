@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import {
+	Button,
 	Icon,
 	Image,
 	Menu,
@@ -23,8 +24,9 @@ const SegmentNoMargin = (props) => (
 		{props.children}
 	</Segment>
 );
-const Item = ({ name, img, onclick}) => (
-	<Menu.Item as="button" onClick={() => onclick}>
+
+const Item = ({ name, img, onClick}) => (
+	<Menu.Item as={Button} onClick={onClick}>
 		<Image src={img} size="small" name={name} />
 		{name}
 	</Menu.Item>
@@ -32,10 +34,11 @@ const Item = ({ name, img, onclick}) => (
 Item.propTypes = {
 	name: PropTypes.string.isRequired,
 	img: PropTypes.string.isRequired,
+	onClick: PropTypes.func,
 };
+
 export default (props) => {
 	const { children, onHide2, visible2 } = props;
-	console.log(props);
 	return (
 		<div>
 			<Sidebar.Pushable as={SegmentNoMargin}>
@@ -70,7 +73,7 @@ export default (props) => {
 				>
 					{Object.values(WidgetListItems).map((item) => (
 						<Item
-							onclick={props.add(item.name)}
+							onClick={props.add(item.name)}
 							key={item.name}
 							name={item.name}
 							img={item.img}

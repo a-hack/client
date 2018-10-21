@@ -75,7 +75,7 @@ const config = {
 // eslint-disable-next-line no-unused-vars
 function generateBaseConfig(type) {
 	// eslint-disable-next-line no-bitwise
-	const i = (Math.random() * 100000000) | 0;
+	const i = ((Math.random() * 100000000) | 0).toString();
 	return {
 		[i]: {
 			location: {
@@ -94,7 +94,6 @@ function generateBaseConfig(type) {
 class Dashboard extends Component {
 	constructor(props) {
 		super(props);
-		console.log(props);
 
 		const {  match: { params: { hash } } } = props;
 
@@ -111,6 +110,7 @@ class Dashboard extends Component {
 		this.handleWidgetbarHide = this.handleWidgetbarHide.bind(this);
 		this.handleWidgetShowHide = this.handleWidgetShowHide.bind(this);
 		this.add = this.add.bind(this);
+		this.save = this.save.bind(this);
 
 		this.con = new QlikConnection();
 		this.conApi = new QlikRequire();
@@ -147,13 +147,27 @@ class Dashboard extends Component {
 	add(type) {
 		return () => this.setState(({ config }) => {
 			const { widgets } = config;
-			return Object.assign(config, Object.assign(widgets, generateBaseConfig(type)));
+			return Object.assign(
+				config,
+				{
+					widgets: Object.assign(widgets, generateBaseConfig(type)),
+				},
+			);
+		});
+	}
+
+	async save() {
+		const { id } = await save(this.state.config);
+		this.setState({
+			hash: id,
 		});
 	}
 
 	render() {
+		window.history.pushState({}, document.title, `/dash/${this.state.hash}`);
+
 		const {
-			app, q, visible, visibleWidgets, error,
+			app, q, visible, visibleWidgets, error, config,
 		} = this.state;
 		if (app && q) {
 			return (
@@ -193,9 +207,19 @@ class Dashboard extends Component {
 								onClick={() => app.clearAll(true)}
 								style={{
 									borderRadius: "0",
-									float: "center",
 								}}
-							> Clear </Button>
+							>
+								Clear
+							</Button>
+							<Button
+								positive
+								onClick={this.save}
+								style={{
+									borderRadius: "0",
+								}}
+							>
+								Save
+							</Button>
 							<Button
 								right
 								icon
@@ -212,8 +236,6 @@ class Dashboard extends Component {
 							<WidgetGrid
 								q={q}
 								app={app}
-								save={() => {
-								}}
 								config={config}
 								error={error}
 							/>

@@ -106,6 +106,7 @@ export default class WidgetGrid extends Component {
 		}
 
 		const { config: { widgets } } = this.props;
+
 		return (
 			<ResponsiveReactGridLayout
 				style={{ border: "1px solid red" }}
