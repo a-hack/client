@@ -147,7 +147,7 @@ class DesktopContainer extends Component {
 
 DesktopContainer.propTypes = {
 	children: PropTypes.node.isRequired,
-	homeBanner: PropTypes.element.isRequired,
+	homeBanner: PropTypes.element,
 	footer: PropTypes.bool.isRequired,
 };
 

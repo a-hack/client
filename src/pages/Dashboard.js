@@ -64,7 +64,7 @@ class Dashboard extends Component {
 			this.setState({ app });
 		});
 		get(this.state.hash)
-			.then((config) => this.setState({ config }))
+			.then((config) => this.setState({ config, error: undefined }))
 			.catch((error) => this.setState({ error }));
 	}
 
@@ -97,6 +97,7 @@ class Dashboard extends Component {
 
 	updateWidgetConfig(i) {
 		return (newConfig) => {
+			console.log(newConfig);
 			this.setState(({ config: { widgets } }) => {
 				const newWidgets = Object.assign({}, widgets);
 				const { config } = newWidgets[i];

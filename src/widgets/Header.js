@@ -13,7 +13,7 @@ class Paragraph extends Component {
 
 	render() {
 		return (
-			<TextArea style={{width: "100%", minHeight: "100%" }} value={this.props.text} autoHeight placeholder="text..."/>
+			<TextArea onChange={this.onChange} style={{width: "100%", minHeight: "100%" }} value={this.props.config.text} autoHeight placeholder="text..."/>
 		);
 	}
 }
