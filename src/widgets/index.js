@@ -8,8 +8,15 @@ import Gauge from "./Gauge";
 import mapPicture from "../pictures/map.png";
 import piPicture from "../pictures/pi.png";
 import tablePicture from "../pictures/table.png";
-import Header from "./Header";
 
+import Vertical from "./Vertical";
+
+import barPicture from "../pictures/bar.png";
+import linePicture from "../pictures/line.png";
+import textPicture from "../pictures/text.png";
+import gaugePicture from "../pictures/gauge.png";
+
+import Header from "./Header";
 import Line2 from "./Line2";
 import Commitment from "./Commitment";
 import Target from "./Target";
@@ -38,12 +45,27 @@ export default {
 	},
 	Bar: {
 		name: "Bar",
-		img: "template.jpeg",
+		img: barPicture,
 		component: Bar,
 	},
+	Vertical: {
+		name: "Vertical",
+		img: "template.jpeg",
+		component: Vertical,
+	},
+	// Scatter: {
+	// 	name: "Scatter",
+	// 	img: "scatter.jpeg",
+	// 	component: Scatter,
+	// },
+	// Line: {
+	// 	name: "line",
+	// 	img: "line.jpeg",
+	// 	component: Line,
+	// },
 	Line2: {
 		name: "Line2",
-		img: "line.jpeg",
+		img: linePicture,
 		component: Line2,
 	},
 	Scatter2: {
@@ -53,7 +75,7 @@ export default {
 	},
 	Header: {
 		name: "Header",
-		img: "template.jpeg",
+		img: textPicture,
 		component: Header,
 	},
 	Commitment: {
@@ -68,7 +90,7 @@ export default {
 	},
 	Gauge: {
 		name: "Gauge",
-		img: "template.jpeg",
+		img: gaugePicture,
 		component: Gauge,
 	},
 };

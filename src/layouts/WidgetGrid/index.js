@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Responsive, WidthProvider } from "react-grid-layout";
-import { Message } from "semantic-ui-react";
+import { Button, Message } from "semantic-ui-react";
 
 import "./index.css";
 
@@ -22,6 +22,7 @@ export default class WidgetGrid extends Component {
 		q: PropTypes.any.isRequired,
 		cols: PropTypes.object,
 		save: PropTypes.func.isRequired,
+		removeWidget: PropTypes.func.isRequired,
 		config: PropTypes.shape({
 			widgets: PropTypes.objectOf(
 				PropTypes.shape({
@@ -85,15 +86,32 @@ export default class WidgetGrid extends Component {
 				data-grid={location}
 			>
 				<div
-					className="awesome-dragging-handle-thing"
 					style={{
 						height: "1rem",
 						borderBottom: "1px solid rgba(0, 0, 0, 0.2)",
+						display: "flex",
 					}}
 				>
+					<a
+						href="#"
+						onClick={this.props.removeWidget(i)}
+						style={{
+							height: "100%",
+						}}
+					>
+						X
+					</a>
+					<div
+						style={{
+							cursor: "grab",
+							flexGrow: "1",
+						}}
+						className="awesome-dragging-handle-thing"
+					>
+					</div>
 				</div>
 				<Widget
-					style={{ maxHeight: "100%" }}
+					style={{ maxHeight: "calc(100% - 1rem)" }}
 					key={i}
 					app={app}
 					config={config}
