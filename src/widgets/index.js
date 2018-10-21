@@ -11,6 +11,7 @@ import tablePicture from "../pictures/table.png";
 
 import Vertical from "./Vertical";
 
+import templatePicture from "../pictures/template.png";
 import barPicture from "../pictures/bar.png";
 import linePicture from "../pictures/line.png";
 import scatterPicture from "../pictures/scatter.png";
@@ -29,7 +30,7 @@ import Scatter2 from "./Scatter2";
 export default {
 	Template: {
 		name: "Template",
-		img: "template.jpeg",
+		img: templatePicture,
 		component: Template,
 	},
 	AppTemplate: {
