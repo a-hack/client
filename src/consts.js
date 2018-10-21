@@ -6,5 +6,5 @@ export const WidgetProps = {
 	q: PropTypes.object.isRequired,
 	app: PropTypes.object.isRequired,
 	config: PropTypes.object.isRequired,
-	save: PropTypes.func.isRequired,
+	updateConfig: PropTypes.func.isRequired,
 };
