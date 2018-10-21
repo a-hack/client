@@ -22,7 +22,7 @@ const config = {
 				h: 4,
 			},
 			config: {},
-			type: "Template",
+			type: "WorldMap",
 		},
 		b: {
 			location: {
@@ -57,6 +57,7 @@ const config = {
 			config: {},
 			type: "Template",
 		},
+
 	},
 };
 
@@ -176,6 +177,14 @@ class Dashboard extends Component {
 							>
 								<Icon name="filter" />
 							</Button>
+							<Button
+								negative
+								onClick={() => app.clearAll(true)}
+								style={{
+									borderRadius: "0",
+									float: "center",
+								}}
+							> Clear </Button>
 							<Button
 								right
 								icon

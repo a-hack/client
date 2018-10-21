@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "ajv": "^6.5.4",
+    "d3-scale": "^2.1.2",
     "enigma.js": "^2.3.0",
     "picasso.js": "^0.15.0",
     "prop-types": "^15.6.2",
@@ -12,8 +12,10 @@
     "react-grid-layout": "^0.16.6",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
+    "react-simple-maps": "^0.12.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.82.5",
+    "victory": "^30.5.1",
     "whatwg-fetch": "^3.0.0"
   },
   "scripts": {

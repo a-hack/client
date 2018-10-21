@@ -23,8 +23,8 @@ const SegmentNoMargin = (props) => (
 		{props.children}
 	</Segment>
 );
-const Item = ({ name, img }) => (
-	<Menu.Item as="button">
+const Item = ({ name, img, onclick}) => (
+	<Menu.Item as="button" onClick={() => onclick}>
 		<Image src={img} size="small" name={name} />
 		{name}
 	</Menu.Item>
@@ -70,7 +70,7 @@ export default (props) => {
 				>
 					{Object.values(WidgetListItems).map((item) => (
 						<Item
-							onClick={props.add(item.name)}
+							onclick={props.add(item.name)}
 							key={item.name}
 							name={item.name}
 							img={item.img}
