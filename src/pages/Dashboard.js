@@ -153,6 +153,7 @@ class Dashboard extends Component {
 						onHide2={this.handleWidgetbarHide}
 						vertical
 						visible={visible}
+						add={this.add}
 						visible2={visibleWidgets}
 						width="thin"
 						style={{
