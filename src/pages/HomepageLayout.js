@@ -52,7 +52,7 @@ const subHeader = {
 };
 
 const HomepageLayout = () => (
-	<ResponsiveContainer banner={<HomepageHeading />}>
+	<ResponsiveContainer footer banner={<HomepageHeading />}>
 		<Segment style={{ padding: "3em 0em" }} vertical>
 			<Container>
 				<Header
