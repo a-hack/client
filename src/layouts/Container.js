@@ -4,11 +4,9 @@ import React, { Component } from "react";
 import {
 	Button,
 	Container,
-	Divider,
 	Grid,
 	Header,
 	Icon,
-	Image,
 	List,
 	Menu,
 	Responsive,
@@ -16,7 +14,6 @@ import {
 	Sidebar,
 	Visibility,
 } from "semantic-ui-react";
-import GridLayout from "react-grid-layout";
 import "semantic-ui-css/semantic.min.css";
 
 /* eslint-disable react/no-multi-comp */
@@ -32,7 +29,7 @@ class DesktopContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			fixed: undefined
+			fixed: undefined,
 		};
 		this.hideFixedMenu = this.hideFixedMenu.bind(this);
 		this.showFixedMenu = this.showFixedMenu.bind(this);
@@ -47,7 +44,7 @@ class DesktopContainer extends Component {
 	}
 
 	render() {
-		const { children } = this.props;
+		const { children, homeBanner } = this.props;
 		const { fixed } = this.state;
 
 		return (
@@ -60,13 +57,15 @@ class DesktopContainer extends Component {
 					<Segment
 						inverted
 						textAlign="center"
-						style={{ 
-							minHeight: this.props.homeBanner ? "600px" : "70px", 
+						style={{
+							minHeight: homeBanner ? "600px" : "70px",
 							padding: "1em 0em",
-							backgroundImage: this.props.homeBanner ? "url(https://source.unsplash.com/collection/3390539/1600x900)" : "none",
+							backgroundImage: homeBanner
+								? "url(https://source.unsplash.com/collection/3390539/1600x900)"
+								: "none",
 							backgroundSize: "cover",
 							backgroundPosition: "70% 50%",
-							}}
+						}}
 						vertical
 					>
 						<Menu
@@ -84,22 +83,26 @@ class DesktopContainer extends Component {
 								<Menu.Item as="a">Company</Menu.Item>
 								<Menu.Item as="a">Careers</Menu.Item>
 								<Menu.Item position="right">
-								{
-									this.props.homeBanner && 
-									<Button as={Link} to="/dash/new/edit" inverted={!fixed}>
-										New
-									</Button>
-								}
-									
+									{
+										homeBanner && (
+											<Button
+												as={Link}
+												to="/dash/new/edit"
+												inverted={!fixed}
+											>
+												New
+											</Button>
+										)
+									}
 								</Menu.Item>
 							</Container>
 						</Menu>
-					{this.props.homeBanner && this.props.homeBanner}
+						{homeBanner}
 					</Segment>
 				</Visibility>
 
 				{children}
-				<Segment inverted vertical style={{ padding: "4em 0em", marginTop: "2em" }}>
+				<Segment inverted vertical style={{ padding: "4em 0em" }}>
 					<Container>
 						<Grid divided inverted stackable>
 							<Grid.Row>
@@ -134,13 +137,13 @@ class DesktopContainer extends Component {
 					</Container>
 				</Segment>
 			</Responsive>
-		)
+		);
 	}
 }
 
 DesktopContainer.propTypes = {
 	children: PropTypes.node.isRequired,
-	homeBanner: PropTypes.func,
+	homeBanner: PropTypes.func.isRequired,
 };
 
 class MobileContainer extends Component {
@@ -182,7 +185,7 @@ class MobileContainer extends Component {
 							New
 						</Button>
 					}
-						
+
 					</Sidebar>
 
 					<Sidebar.Pusher
@@ -193,12 +196,12 @@ class MobileContainer extends Component {
 						<Segment
 							inverted
 							textAlign="center"
-							style={{ 
-								minHeight:  this.props.isHome ? "350" : "50", 
+							style={{
+								minHeight:  this.props.isHome ? "350" : "50",
 								padding: "1em 0em",
 								backgroundImage: this.props.homeBanner ? "url(https://source.unsplash.com/collection/3390539/1600x900)" : "none",
 								backgroundSize: "cover",
-								backgroundPosition: "70% 50%", 
+								backgroundPosition: "70% 50%",
 								}}
 							vertical
 						>
@@ -263,7 +266,7 @@ class MobileContainer extends Component {
 
 MobileContainer.propTypes = {
 	children: PropTypes.node.isRequired,
-	homeBanner: PropTypes.func,
+	homeBanner: PropTypes.element.isRequired,
 };
 
 const ResponsiveContainer = ({ children, banner }) => (
@@ -275,7 +278,7 @@ const ResponsiveContainer = ({ children, banner }) => (
 
 ResponsiveContainer.propTypes = {
 	children: PropTypes.node.isRequired,
-	banner: PropTypes.func,
+	banner: PropTypes.element.isRequired,
 };
 
-export default ResponsiveContainer
+export default ResponsiveContainer;

@@ -89,6 +89,9 @@ class Dashboard extends Component {
 							secondary
 							attached="right"
 							onClick={this.handleShowHide}
+							style={{
+								borderRadius: "0",
+							}}
 						>
 							<Icon name="filter" />
 						</Button>
