@@ -43,7 +43,7 @@ export default class WidgetGrid extends Component {
 	constructor(props) {
 		super(props);
 
-		const w = props.config.widgets;
+		const w = props.config.widgets || {};
 
 		this.state = {
 			layout: Object.values(w).map(({ location }) => location),
@@ -67,6 +67,7 @@ export default class WidgetGrid extends Component {
 		this.setState({
 			layout,
 		});
+		this.props.updateLayout(layout);
 	}
 
 	widgetToGridItem({ location, config, type }) {
