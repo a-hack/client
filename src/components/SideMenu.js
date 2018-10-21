@@ -163,7 +163,7 @@ class SideMenu extends Component {
 	render() {
 		const {children, onHide2, visible2} = this.props;
 		return (
-			<div>
+			<div style={{ height: "calc(100vh - 73px)" }}>
 				<Sidebar.Pushable as={SegmentNoMargin}>
 					<Sidebar
 						{...this.props}
