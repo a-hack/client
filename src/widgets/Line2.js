@@ -85,14 +85,7 @@ export default class Line2 extends Component {
 		
 		const xaxisCol = hasX ? cX : "Country";
 		const yaxisCol = hasY ? cY : "Partners";
-		
-		console.log(hasX);
-		console.log(hasY);
-		console.log(xaxisCol);
-		console.log(yaxisCol);
-		console.log(this.state.xaxis);
-		console.log(this.state.yaxis);
-		
+
 		this.setState({
 			xaxis: xaxisCol,
 			yaxis: yaxisCol,

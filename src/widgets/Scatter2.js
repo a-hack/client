@@ -7,8 +7,8 @@ export default class Scatter2 extends Component {
 	constructor(props) {
 		super(props);
 
-		const config = this.getConfig();
-		let fields;
+		const config = this.getConfig(); let
+			fields;
 
 		if (props.hasOwnProperty("config")) {
 			if (props.config.hasOwnProperty("xaxis")) {
@@ -26,17 +26,19 @@ export default class Scatter2 extends Component {
 		}
 
 		if (props.config.hasOwnProperty("fields")) {
-			fields = props.fields;
+			fields = props.fields ? props.fields : this.defaultFields();
 		} else {
 			fields = this.defaultFields();
 		}
 
+		
+		
 		this.state = {
-			xaxis: "",
-			yaxis: "",
+			xaxis: config.xaxis,
+			yaxis: config.yaxis,
 			size: "",
 			colour: "",
-			fields,
+			fields: fields,
 		};
 	}
 
@@ -50,11 +52,18 @@ export default class Scatter2 extends Component {
 		const m = {};
 		m[name] = event.target.value;
 		this.setState(m);
-		this.renderGraph.call(this);
+		console.log(this.state);
+		console.log(m);
+		
+		let tmpState = this.state;
+		tmpState[name] = m.name;
+		this.props.updateConfig(tmpState);
+		
+		this.renderGraph(m);
 	}
 
 	defaultFields() {
-		return ["Country", "Ocean Basins", "Partners", "Commitments", "Goals", "Targets"];
+		return ["Country", "Ocean Basins", "Partners", "Commitments"];
 	}
 
 	componentDidMount() {
@@ -63,32 +72,50 @@ export default class Scatter2 extends Component {
 		// });
 	}
 
-	renderGraph() {
+	renderGraph(newm) {
 		const { app } = this.props;
 
 		const colNames = this.state.fields;
 		
-		const hasX = colNames.includes(this.state.xaxis);
-		const hasY = colNames.includes(this.state.yaxis);
+		const cX = newm ? (newm.xaxis ? newm.xaxis: this.state.xaxis) : this.state.xaxis;
+		const cY = newm ? (newm.yaxis ? newm.yaxis: this.state.yaxis) : this.state.yaxis;
 		
-		const xaxisCol = hasX ? this.state.xaxis : colNames[0];
-		const yaxisCol = hasY ? this.state.yaxis : colNames[0];
+		const hasX = colNames.includes(cX);
+		const hasY = colNames.includes(cY);
+		
+		const xaxisCol = hasX ? cX : "Commitments";
+		const yaxisCol = hasY ? cY : "Partners";
+
 		this.setState({
 			xaxis: xaxisCol,
 			yaxis: yaxisCol,
 		});
 		
 		const mapMap = {"Country" : "Country", 
-		 "Ocean Basins" : "=Count(Distinct [Commitment ID])", 
+		 "Commitments" : "=Count(Distinct [Commitment ID])", 
 		 "Partners" : "=Count(Distinct [Partners])", 
-		 "Commitments" : "=Count(Distinct [Ocean Basins])"};
+		 "Ocean Basins" : "=Count(Distinct [Ocean Basins])"};
 		
-		app.visualization.create("scatterchart", // viz type
-			[xaxisCol, mapMap[yaxisCol]],
-			{
-				nullMode : "connect",
-				dataPoint:{show:true, showLabels:true}
-			})
+		app.visualization.create("scatterplot", // viz type
+			[
+				{qDef:{
+					qFieldDefs:["=[Country]"],
+					qFieldLabels:["Country"]
+					},
+					qNullSuppression:true}, 
+				{
+					qDef:{
+							qLabel:xaxisCol,
+							qDef:mapMap[xaxisCol]
+					}
+					},
+				{
+					qDef:{
+							qLabel:yaxisCol,
+							qDef:mapMap[yaxisCol]
+					}
+					}],
+			{})
 			.then((viz) => {
 				viz.show(this.ref);
 			});
@@ -104,7 +131,7 @@ export default class Scatter2 extends Component {
 				<span>
 					<div
 						id="test"
-						style={{height: "50%" }}
+						style={ {height: "80%" }}
 						ref={(ref) => {
 							this.ref = ref;
 						}}
@@ -127,24 +154,6 @@ export default class Scatter2 extends Component {
 							onChange={this.handleChange.bind(this, "yaxis")}
 						>
 							{this.state.fields.map((val) => <option key={val} value={val}>{val}</option>)}
-						</select>
-					</div>
-					<div>
-						Size:
-						<select
-							value={this.state.size}
-							onChange={this.handleChange.bind(this, "size")}
-						>
-							{[""].concat(this.state.fields).map((val) => <option key={val} value={val}>{val}</option>)}
-						</select>
-					</div>
-					<div>
-						Colour:
-						<select
-							value={this.state.colour}
-							onChange={this.handleChange.bind(this, "colour")}
-						>
-							{[""].concat(this.state.fields).map((val) => <option key={val} value={val}>{val}</option>)}
 						</select>
 					</div>
 				</span>
