@@ -39,10 +39,14 @@ export default class Template extends Component {
 			{})
 			.then((viz) => {
 				viz.show(this.ref);
+				this.viz = viz;
 			});
 	}
 
 	render() {
+		if (this.viz != null) {
+			this.viz.show(this.ref);
+		}
 		return (
 			<div
 				style={{ height: "100%" }}

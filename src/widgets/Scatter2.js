@@ -117,11 +117,15 @@ export default class Scatter2 extends Component {
 					}],
 			{})
 			.then((viz) => {
+				this.viz = viz;
 				viz.show(this.ref);
 			});
 	}
 
 	render() {
+		if (this.viz != null) {
+			this.viz.show(this.ref);
+		}
 		const { data } = this.state;
 		return (
 			<div style={{

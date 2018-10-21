@@ -104,11 +104,15 @@ export default class Line2 extends Component {
 				dataPoint:{show:true, showLabels:true}
 			})
 			.then((viz) => {
+				this.viz = viz;
 				viz.show(this.ref);
 			});
 	}
 
 	render() {
+		if (this.viz != null) {
+			this.viz.show(this.ref);
+		}
 		const { data } = this.state;
 		return (
 			<div style={{

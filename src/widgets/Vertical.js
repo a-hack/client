@@ -46,11 +46,15 @@ export default class Vertical extends Component {
   
 			})
 			.then((viz) => {
+				this.viz = viz;
 				viz.show(this.ref);
 			});
 	}
 
 	render() {
+		if (this.viz != null) {
+			this.viz.show(this.ref);
+		}
 		return (
 			<div
 				style={{ height: "100%" }}
