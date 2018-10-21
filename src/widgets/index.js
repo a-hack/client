@@ -6,6 +6,7 @@ import WorldMap from "./WorldMap";
 import mapPicture from "../pictures/map.png";
 import piPicture from "../pictures/pi.png";
 import tablePicture from "../pictures/table.png";
+import Vertical from "./Vertical";
 
 export default {
 	Template: {
@@ -32,6 +33,11 @@ export default {
 		name: "Bar",
 		img: "template.jpeg",
 		component: Bar,
+	},
+	Vertical: {
+		name: "Vertical",
+		img: "template.jpeg",
+		component: Vertical,
 	},
 	// Scatter: {
 	// 	name: "Scatter",

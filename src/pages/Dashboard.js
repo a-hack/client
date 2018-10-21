@@ -68,6 +68,15 @@ const config = {
 			config: {},
 			type: "Template",
 		},
+		vertical: {
+			location: {
+				i: "vertical",
+				x: 0,
+				y: 0,
+				w: 4,
+				h: 2,
+			}
+		}
 
 	},
 };
