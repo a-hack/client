@@ -27,7 +27,6 @@ export default class Template extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
 	}
 
 	componentDidMount() {
@@ -61,6 +60,17 @@ export default class Template extends Component {
 				viz.show(this.ref);
 				this.viz = viz;
 			});
+	}
+
+	shouldComponentUpdate(nextProps) {
+		const { props } = this;
+
+		return Object.keys(this.props).reduce((acc, key) => {
+			if (props[key] !== nextProps[key]) {
+				return acc && false;
+			}
+			return acc;
+		}, true);
 	}
 
 	render() {
